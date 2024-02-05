@@ -6,13 +6,25 @@
 //
 
 import SwiftUI
+import MapKit
 
-struct LocationManager: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
+    private var locationManager = CLLocationManager()
+    @Published var region = MKCoordinateRegion()
+    //現在地の緯度経度を保持するプロパティ
+    @Published var currentLocation: CLLocationCoordinate2D?
+    
+    override init() {
+        super.init()
+        self.locationManager.delegate = self
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.requestWhenInUseAuthorization()
+        self.locationManager.startUpdatingLocation()
     }
-}
 
-#Preview {
-    LocationManager()
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let location = locations.last else { return }
+        self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
+        self.currentLocation = location.coordinate
+    }
 }

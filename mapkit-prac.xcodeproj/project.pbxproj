@@ -14,6 +14,8 @@
 		2AE0DD7B2B70EFD400D2436C /* mapkit_pracTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD7A2B70EFD400D2436C /* mapkit_pracTests.swift */; };
 		2AE0DD852B70EFD400D2436C /* mapkit_pracUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD842B70EFD400D2436C /* mapkit_pracUITests.swift */; };
 		2AE0DD872B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD862B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift */; };
+		2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD932B70EFFC00D2436C /* MapView.swift */; };
+		2AE0DD962B70F00D00D2436C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD952B70F00D00D2436C /* LocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		2AE0DD802B70EFD400D2436C /* mapkit-pracUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "mapkit-pracUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2AE0DD842B70EFD400D2436C /* mapkit_pracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapkit_pracUITests.swift; sourceTree = "<group>"; };
 		2AE0DD862B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapkit_pracUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		2AE0DD932B70EFFC00D2436C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		2AE0DD952B70F00D00D2436C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -98,6 +102,8 @@
 				2AE0DD6B2B70EFD300D2436C /* ContentView.swift */,
 				2AE0DD6D2B70EFD400D2436C /* Assets.xcassets */,
 				2AE0DD6F2B70EFD400D2436C /* Preview Content */,
+				2AE0DD932B70EFFC00D2436C /* MapView.swift */,
+				2AE0DD952B70F00D00D2436C /* LocationManager.swift */,
 			);
 			path = "mapkit-prac";
 			sourceTree = "<group>";
@@ -257,7 +263,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2AE0DD962B70F00D00D2436C /* LocationManager.swift in Sources */,
 				2AE0DD6C2B70EFD300D2436C /* ContentView.swift in Sources */,
+				2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */,
 				2AE0DD6A2B70EFD300D2436C /* mapkit_pracApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -425,6 +433,8 @@
 				DEVELOPMENT_TEAM = AQATLL3RW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = OK;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -454,6 +464,8 @@
 				DEVELOPMENT_TEAM = AQATLL3RW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = OK;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
