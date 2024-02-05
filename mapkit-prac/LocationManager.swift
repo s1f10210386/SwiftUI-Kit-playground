@@ -21,10 +21,18 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         self.locationManager.requestWhenInUseAuthorization()
         self.locationManager.startUpdatingLocation()
     }
-
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         self.region = MKCoordinateRegion(center: location.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01))
         self.currentLocation = location.coordinate
+    }
+    
+    func addCurrentLocationPin() -> MKPointAnnotation? {
+        guard let currentLocation = self.currentLocation else { return nil }
+        let pin = MKPointAnnotation()
+        pin.coordinate = currentLocation
+        pin.title = "現在地"
+        return pin
     }
 }
