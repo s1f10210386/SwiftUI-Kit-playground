@@ -8,11 +8,23 @@
 import SwiftUI
 
 struct ResetPasswordView: View {
+    @State private var email: String = ""
+    @ObservedObject var viewModel: AuthViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("Email", text: $email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button("Reset Password") {
+                viewModel.resetPassword(email: email)
+            }
+        }
     }
 }
 
+
 #Preview {
-    ResetPasswordView()
+    ResetPasswordView(viewModel: AuthViewModel())
 }

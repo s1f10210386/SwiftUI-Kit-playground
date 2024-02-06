@@ -8,11 +8,35 @@
 import SwiftUI
 
 struct SignUpView: View {
+    @State private var email: String = ""
+    @State private var password: String = ""
+    @ObservedObject var viewModel: AuthViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            TextField("Email", text: $email)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            SecureField("Password", text: $password)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+
+            Button("Sign Up") {
+                viewModel.signUp(email: email, password: password)
+            }
+
+            if viewModel.isAuthenticated {
+                // ログイン後のページに遷移
+                if viewModel.isAuthenticated {
+                    HelloView(viewModel: viewModel)
+                }
+
+            }
+        }
     }
 }
 
 #Preview {
-    SignUpView()
+    SignUpView(viewModel: AuthViewModel())
 }

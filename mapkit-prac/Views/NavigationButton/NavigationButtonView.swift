@@ -7,36 +7,53 @@
 
 import SwiftUI
 
-struct NavigationView: View {
+struct NavigationButtonView: View {
+    
+    @State var isShowFirst = false
+    @State var isShowSecond = false
+    @State var isShowThird = false
+    
     var body: some View {
         VStack {
             Button(action: {
-                // 3Dボタンのアクション
+                isShowFirst = true
             }) {
                 Image(systemName: "cube.transparent")
                     .padding()
-                    .background(Color.blue.opacity(0.7))
                     .foregroundColor(.white)
+                    .background(Color.blue.opacity(0.7))
+                    .sheet(isPresented: $isShowFirst){
+                        First()
+                            .presentationDetents([.medium, .large])
+                    }
                     .clipShape(Circle())
             }
             
             Button(action: {
-                // プロフィールボタンのアクション
-            }) {
-                Image(systemName: "person.crop.circle.fill")
-                    .padding()
-                    .background(Color.blue.opacity(0.7))
-                    .foregroundColor(.white)
-                    .clipShape(Circle())
-            }
-            
-            Button(action: {
-                // 設定ボタンのアクション
+                isShowSecond = true
             }) {
                 Image(systemName: "gearshape.fill")
                     .padding()
-                    .background(Color.blue.opacity(0.7))
                     .foregroundColor(.white)
+                    .sheet(isPresented: $isShowSecond){
+                        Second()
+                            .presentationDetents([.medium, .large])
+                    }
+                    .background(Color.blue.opacity(0.7))
+                    .clipShape(Circle())
+            }
+            
+            Button(action: {
+                isShowThird = true
+            }) {
+                Image(systemName: "person.crop.circle.fill")
+                    .padding()
+                    .foregroundColor(.white)
+                    .sheet(isPresented: $isShowThird){
+                        Third()
+                            .presentationDetents([.medium, .large])
+                    }
+                    .background(Color.blue.opacity(0.7))
                     .clipShape(Circle())
             }
         }
@@ -48,5 +65,5 @@ struct NavigationView: View {
 
 
 #Preview {
-    NavigationView()
+    NavigationButtonView()
 }

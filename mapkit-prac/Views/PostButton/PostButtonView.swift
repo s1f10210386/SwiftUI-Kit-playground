@@ -8,11 +8,30 @@
 import SwiftUI
 
 struct PostButtonView: View {
+    
+    @State var isShowMessageView = false
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        Button(action:{
+            isShowMessageView = true
+        }){
+            Image(systemName:"plus.message")
+                .padding()
+                .sheet(isPresented: $isShowMessageView){
+                    MessageView()
+                        .presentationDetents([.medium, .large])
+                        
+                }
+                .background(Color.blue)
+                .foregroundColor(.white)
+                .cornerRadius(30)
+        }
     }
 }
 
 #Preview {
     PostButtonView()
 }
+
+

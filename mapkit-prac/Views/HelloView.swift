@@ -7,12 +7,23 @@
 
 import SwiftUI
 
+// ログイン後の画面
 struct HelloView: View {
+    var viewModel: AuthViewModel
+
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Text("Hello, you're logged in!")
+                .font(.title)
+                .padding()
+            Button("Log Out") {
+                // ログアウトしてログイン画面へ遷移する
+                viewModel.signOut()
+            }
+        }
     }
 }
 
 #Preview {
-    HelloView()
+    HelloView(viewModel: AuthViewModel())
 }
