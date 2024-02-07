@@ -14,10 +14,14 @@
 		2A1B9EA22B7264220040DB7A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA12B7264220040DB7A /* SignUpView.swift */; };
 		2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */; };
 		2A1B9EA62B7264EB0040DB7A /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA52B7264EB0040DB7A /* HelloView.swift */; };
-		2ABA8AA82B71E9AA00981749 /* First.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA72B71E9AA00981749 /* First.swift */; };
+		2A620DB02B739D8F00308D41 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DAF2B739D8F00308D41 /* ARKit.framework */; };
+		2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DB12B739D9800308D41 /* CoreLocation.framework */; };
+		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
+		2A620DB82B73A8FC00308D41 /* FullScreenARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB72B73A8FC00308D41 /* FullScreenARView.swift */; };
+		2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */; };
 		2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* Second.swift */; };
 		2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AAB2B71E9BA00981749 /* Third.swift */; };
-		2AD875AF2B71D3380092F094 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875AE2B71D3380092F094 /* MessageView.swift */; };
+		2AD875AF2B71D3380092F094 /* TextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875AE2B71D3380092F094 /* TextBoxView.swift */; };
 		2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */; };
 		2AD875B72B71E7070092F094 /* PostButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875B62B71E7070092F094 /* PostButtonView.swift */; };
 		2AE0DD6A2B70EFD300D2436C /* mapkit_pracApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD692B70EFD300D2436C /* mapkit_pracApp.swift */; };
@@ -28,7 +32,7 @@
 		2AE0DD852B70EFD400D2436C /* mapkit_pracUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD842B70EFD400D2436C /* mapkit_pracUITests.swift */; };
 		2AE0DD872B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD862B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift */; };
 		2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD932B70EFFC00D2436C /* MapView.swift */; };
-		2AE0DD962B70F00D00D2436C /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD952B70F00D00D2436C /* LocationManager.swift */; };
+		2AE0DD962B70F00D00D2436C /* LocationManagerRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AE0DD952B70F00D00D2436C /* LocationManagerRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,10 +59,14 @@
 		2A1B9EA12B7264220040DB7A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A1B9EA52B7264EB0040DB7A /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
-		2ABA8AA72B71E9AA00981749 /* First.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = First.swift; sourceTree = "<group>"; };
+		2A620DAF2B739D8F00308D41 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
+		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
+		2A620DB72B73A8FC00308D41 /* FullScreenARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullScreenARView.swift; sourceTree = "<group>"; };
+		2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxViewModel.swift; sourceTree = "<group>"; };
 		2ABA8AA92B71E9B400981749 /* Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Second.swift; sourceTree = "<group>"; };
 		2ABA8AAB2B71E9BA00981749 /* Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Third.swift; sourceTree = "<group>"; };
-		2AD875AE2B71D3380092F094 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		2AD875AE2B71D3380092F094 /* TextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxView.swift; sourceTree = "<group>"; };
 		2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		2AD875B62B71E7070092F094 /* PostButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonView.swift; sourceTree = "<group>"; };
 		2AE0DD662B70EFD300D2436C /* mapkit-prac.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "mapkit-prac.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,7 +80,7 @@
 		2AE0DD842B70EFD400D2436C /* mapkit_pracUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapkit_pracUITests.swift; sourceTree = "<group>"; };
 		2AE0DD862B70EFD400D2436C /* mapkit_pracUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapkit_pracUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		2AE0DD932B70EFFC00D2436C /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
-		2AE0DD952B70F00D00D2436C /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		2AE0DD952B70F00D00D2436C /* LocationManagerRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,6 +88,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */,
+				2A620DB02B739D8F00308D41 /* ARKit.framework in Frameworks */,
 				2A1B9E992B72603A0040DB7A /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,11 +126,39 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2A620DAE2B739D8F00308D41 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2A620DB12B739D9800308D41 /* CoreLocation.framework */,
+				2A620DAF2B739D8F00308D41 /* ARKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		2A620DB32B739DC800308D41 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				2AE0DD952B70F00D00D2436C /* LocationManagerRepository.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		2A620DB42B739E2100308D41 /* AR */ = {
+			isa = PBXGroup;
+			children = (
+				2A620DB52B739E2F00308D41 /* ARView.swift */,
+				2A620DB72B73A8FC00308D41 /* FullScreenARView.swift */,
+			);
+			path = AR;
+			sourceTree = "<group>";
+		};
 		2AD875B22B71E4EA0092F094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A620DB42B739E2100308D41 /* AR */,
 				2AD875B52B71E6F00092F094 /* PostButton */,
-				2AD875AE2B71D3380092F094 /* MessageView.swift */,
+				2AD875AE2B71D3380092F094 /* TextBoxView.swift */,
+				2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */,
 				2AD875B42B71E59B0092F094 /* NavigationButton */,
 				2AD875B32B71E58F0092F094 /* Map */,
 				2A1B9E9F2B7264110040DB7A /* SignInView.swift */,
@@ -143,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */,
-				2ABA8AA72B71E9AA00981749 /* First.swift */,
 				2ABA8AA92B71E9B400981749 /* Second.swift */,
 				2ABA8AAB2B71E9BA00981749 /* Third.swift */,
 			);
@@ -165,6 +202,7 @@
 				2AE0DD792B70EFD400D2436C /* mapkit-pracTests */,
 				2AE0DD832B70EFD400D2436C /* mapkit-pracUITests */,
 				2AE0DD672B70EFD300D2436C /* Products */,
+				2A620DAE2B739D8F00308D41 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -181,6 +219,7 @@
 		2AE0DD682B70EFD300D2436C /* mapkit-prac */ = {
 			isa = PBXGroup;
 			children = (
+				2A620DB32B739DC800308D41 /* Repository */,
 				2A1B9E9C2B7261600040DB7A /* ViewModel */,
 				2AD875B22B71E4EA0092F094 /* Views */,
 				2A20FFB22B71258C0090D524 /* Model */,
@@ -189,7 +228,6 @@
 				2AE0DD6D2B70EFD400D2436C /* Assets.xcassets */,
 				2A1B9E952B725D560040DB7A /* GoogleService-Info.plist */,
 				2AE0DD6F2B70EFD400D2436C /* Preview Content */,
-				2AE0DD952B70F00D00D2436C /* LocationManager.swift */,
 			);
 			path = "mapkit-prac";
 			sourceTree = "<group>";
@@ -356,20 +394,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2AE0DD962B70F00D00D2436C /* LocationManager.swift in Sources */,
+				2AE0DD962B70F00D00D2436C /* LocationManagerRepository.swift in Sources */,
 				2AE0DD6C2B70EFD300D2436C /* ContentView.swift in Sources */,
 				2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */,
 				2AE0DD6A2B70EFD300D2436C /* mapkit_pracApp.swift in Sources */,
 				2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */,
+				2A620DB62B739E2F00308D41 /* ARView.swift in Sources */,
 				2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */,
 				2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */,
 				2A1B9E9E2B72626D0040DB7A /* AuthViewModel.swift in Sources */,
 				2A1B9EA62B7264EB0040DB7A /* HelloView.swift in Sources */,
-				2AD875AF2B71D3380092F094 /* MessageView.swift in Sources */,
+				2AD875AF2B71D3380092F094 /* TextBoxView.swift in Sources */,
+				2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */,
 				2A1B9EA22B7264220040DB7A /* SignUpView.swift in Sources */,
-				2ABA8AA82B71E9AA00981749 /* First.swift in Sources */,
 				2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */,
 				2AD875B72B71E7070092F094 /* PostButtonView.swift in Sources */,
+				2A620DB82B73A8FC00308D41 /* FullScreenARView.swift in Sources */,
 				2A1B9EA02B7264110040DB7A /* SignInView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -538,7 +578,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = OK;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR機能を用いるために使用します";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "投稿した場所を共有するために使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -569,7 +610,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = OK;
+				INFOPLIST_KEY_NSCameraUsageDescription = "AR機能を用いるために使用します";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "投稿した場所を共有するために使用します。";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

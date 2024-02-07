@@ -8,11 +8,10 @@
 import SwiftUI
 
 struct Second: View {
+    @EnvironmentObject var viewModel: TextBoxViewModel
+    
     var body: some View {
-        Text("setting")
+        Text("入力されたテキスト: \(viewModel.userInput)")
     }
 }
 
-#Preview {
-    Second()
-}

@@ -7,35 +7,41 @@
 
 import SwiftUI
 
-struct MessageView: View {
-    @State private var userInput: String = ""
-    
+struct TextBoxView: View {
+    @EnvironmentObject var viewModel: TextBoxViewModel
     @ObservedObject var locationManager = LocationManager()
 
     
     var body: some View {
         VStack{
-            TextField("テキストを入力", text: $userInput)
+            TextField("テキストを入力", text: $viewModel.userInput)
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .padding()
             
             Button("送信") {
                 if let location = locationManager.location {
-                    print("入力されたテキスト: \(userInput)")
+                    print("入力されたテキスト: \(viewModel.userInput)")
                     print("現在地: 緯度 \(location.coordinate.latitude), 経度 \(location.coordinate.longitude)")
                 } else {
                     print("位置情報が利用できません")
                 }
                 
-                userInput = ""
+                viewModel.userInput=""
                 
                 // ここで後ほど、AR空間にテキストを配置する処理を追加
             }
             .padding()
         }
+        .onAppear{
+            locationManager.requestPermission()
+            locationManager.startUpdatingLocation()
+        }
     }
 }
 
-#Preview {
-    MessageView()
+struct TextBoxView_Previews: PreviewProvider {
+    static var previews: some View {
+        TextBoxView()
+            .environmentObject(TextBoxViewModel())
+    }
 }

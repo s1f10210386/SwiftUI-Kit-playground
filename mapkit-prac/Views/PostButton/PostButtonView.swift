@@ -19,7 +19,7 @@ struct PostButtonView: View {
             Image(systemName:"plus.message")
                 .padding()
                 .sheet(isPresented: $isShowMessageView){
-                    MessageView()
+                    TextBoxView()
                         .presentationDetents([.medium, .large])
                         
                 }

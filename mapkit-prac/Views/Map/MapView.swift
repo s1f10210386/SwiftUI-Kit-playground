@@ -10,8 +10,7 @@ import MapKit
 
 
 struct MapView: UIViewRepresentable {
-    @Binding var region: MKCoordinateRegion
-
+    
     //このメソッドは、UIViewRepresentableプロトコルが要求するメソッドの一つで
     //SwiftUIによって呼び出され、表示するUIKitビュー(今回はMKMapView)のインスタンスを作成して返す
     func makeUIView(context: Context) -> MKMapView {
@@ -27,6 +26,9 @@ struct MapView: UIViewRepresentable {
     //SwiftUIビュー状態が変わり、その変更をUIKitビューに適応する必要がある時に呼び出される
     //
     func updateUIView(_ uiView: MKMapView, context: Context) {
-        uiView.setRegion(region, animated: true)
     }
+}
+
+#Preview {
+    MapView()
 }

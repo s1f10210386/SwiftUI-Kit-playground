@@ -10,9 +10,11 @@ import SwiftUI
 struct ContentView: View {
     // LocationManagerのインスタンスを生成
     @ObservedObject var locationManager = LocationManager()
+    @ObservedObject var userInput = TextBoxViewModel()
     
     var body: some View {
-        MapView(region: $locationManager.region)
+        
+        MapView()
             .edgesIgnoringSafeArea(.all)
         
             .overlay(

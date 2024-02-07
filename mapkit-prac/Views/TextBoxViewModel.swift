@@ -7,12 +7,8 @@
 
 import SwiftUI
 
-struct TextBoxViewModel: View {
-    var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-    }
-}
+import Combine
 
-#Preview {
-    TextBoxViewModel()
+class TextBoxViewModel: ObservableObject {
+    @Published var userInput: String = ""
 }

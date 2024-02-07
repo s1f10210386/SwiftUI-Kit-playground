@@ -9,25 +9,25 @@ import SwiftUI
 
 struct NavigationButtonView: View {
     
-    @State var isShowFirst = false
+    @State var isShowARView = false
     @State var isShowSecond = false
     @State var isShowThird = false
     
     var body: some View {
+        
         VStack {
+            
             Button(action: {
-                isShowFirst = true
-            }) {
-                Image(systemName: "cube.transparent")
-                    .padding()
-                    .foregroundColor(.white)
-                    .background(Color.blue.opacity(0.7))
-                    .sheet(isPresented: $isShowFirst){
-                        First()
-                            .presentationDetents([.medium, .large])
-                    }
-                    .clipShape(Circle())
-            }
+                            isShowARView = true
+                        }) {
+                            Image(systemName: "cube.transparent")
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.blue.opacity(0.7))
+                                .clipShape(Circle())
+                        }
+                        .fullScreenCover(isPresented: $isShowARView) {
+                            FullScreenARView()                        }
             
             Button(action: {
                 isShowSecond = true
@@ -62,6 +62,8 @@ struct NavigationButtonView: View {
         
     }
 }
+
+
 
 
 #Preview {
