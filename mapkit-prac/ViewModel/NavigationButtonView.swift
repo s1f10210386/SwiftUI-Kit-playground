@@ -50,7 +50,7 @@ struct NavigationButtonView: View {
                     .padding()
                     .foregroundColor(.white)
                     .sheet(isPresented: $isShowThird){
-                        Third()
+                        HelloView(viewModel: AuthViewModel())
                             .presentationDetents([.medium, .large])
                     }
                     .background(Color.blue.opacity(0.7))

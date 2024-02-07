@@ -25,11 +25,13 @@ struct SignInView: View {
 
                 Button("Sign In") {
                     viewModel.signIn(email: email, password: password)
+                    
                 }
 
                 if viewModel.isAuthenticated {
                     // ログイン後のページに遷移
-                    HelloView(viewModel: viewModel)
+                    ContentView()
+                        .environmentObject(TextBoxViewModel())
                 }
 
                 // 新規登録画面への遷移ボタン

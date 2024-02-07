@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import FirebaseAuth
+
 
 // ログイン後の画面
 struct HelloView: View {
@@ -13,7 +15,7 @@ struct HelloView: View {
 
     var body: some View {
         VStack {
-            Text("Hello, you're logged in!")
+            Text("uid: \(Auth.auth().currentUser?.uid ?? "no uid")")
                 .font(.title)
                 .padding()
             Button("Log Out") {
