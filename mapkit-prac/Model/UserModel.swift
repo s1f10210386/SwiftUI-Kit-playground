@@ -9,6 +9,16 @@ import FirebaseFirestore
 
 struct User {
     var id: String
-    var name: String
+    var email: String
     var createdAt: Timestamp
 }
+
+struct Post {
+    var postId: String
+    var userId: DocumentReference // ユーザーへのリファレンス
+    var createdAt: Timestamp
+    var content: String
+    var latitude : Double
+    var longitude : Double
+}
+
