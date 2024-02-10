@@ -14,6 +14,7 @@
 		2A1B9EA22B7264220040DB7A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA12B7264220040DB7A /* SignUpView.swift */; };
 		2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */; };
 		2A1B9EA62B7264EB0040DB7A /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA52B7264EB0040DB7A /* HelloView.swift */; };
+		2A2A025E2B78B66D003627DA /* 3DScannViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A2A025D2B78B66D003627DA /* 3DScannViewModel.swift */; };
 		2A620DB02B739D8F00308D41 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DAF2B739D8F00308D41 /* ARKit.framework */; };
 		2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DB12B739D9800308D41 /* CoreLocation.framework */; };
 		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
@@ -66,6 +67,7 @@
 		2A1B9EA12B7264220040DB7A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A1B9EA52B7264EB0040DB7A /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		2A2A025D2B78B66D003627DA /* 3DScannViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = 3DScannViewModel.swift; sourceTree = "<group>"; };
 		2A620DAF2B739D8F00308D41 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				2AF2740E2B73D05A00D9A97E /* UserViewModel.swift */,
 				2A91F1EC2B749C6A000D41D5 /* PostVieModel.swift */,
 				2AA739A52B77855B00C1D436 /* LocationViewMode.swift */,
+				2A2A025D2B78B66D003627DA /* 3DScannViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -424,6 +427,7 @@
 				2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */,
 				2A620DB62B739E2F00308D41 /* ARView.swift in Sources */,
 				2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */,
+				2A2A025E2B78B66D003627DA /* 3DScannViewModel.swift in Sources */,
 				2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */,
 				2A1B9E9E2B72626D0040DB7A /* AuthViewModel.swift in Sources */,
 				2AF274112B73D15300D9A97E /* TextView.swift in Sources */,
