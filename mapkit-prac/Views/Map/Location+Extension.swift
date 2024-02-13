@@ -35,5 +35,15 @@ extension LocationViewModel {
     
     func handleRoute(route: MKRoute){
         self.route = route //ルート検索の結果が得られたら情報を更新
+        updateCoordinates(from: route.polyline) // 座標の更新をfromというラベルでupdateCoordinatesに委託
+    }
+    
+    func updateCoordinates(from polyline: MKPolyline) { //ラベルの型を指定
+        let pointCount = polyline.pointCount
+        var coordinates = [CLLocationCoordinate2D](repeating: kCLLocationCoordinate2DInvalid, count: pointCount)
+        polyline.getCoordinates(&coordinates, range: NSRange(location: 0, length: pointCount)) //ポリラインを形成するすべての点の座標をこの配列にコピーする
+        
+        self.coordinates = coordinates // ViewModelの座標配列を更新
+        print("座標: \(coordinates)")
     }
 }

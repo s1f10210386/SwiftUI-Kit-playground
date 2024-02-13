@@ -13,6 +13,8 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     @Published var currentLocation: CLLocation?
     @Published var route: MKRoute? //ViewModel内でまずは結果を保持(ロジックについてはExtension)更新をViewに自動通知するように
+    @Published var coordinates = [CLLocationCoordinate2D]() //ルートの座標を保持
+    
 
     override init() {
         super.init()
