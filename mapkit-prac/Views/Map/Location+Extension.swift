@@ -44,6 +44,13 @@ extension LocationViewModel {
         polyline.getCoordinates(&coordinates, range: NSRange(location: 0, length: pointCount)) //ポリラインを形成するすべての点の座標をこの配列にコピーする
         
         self.coordinates = coordinates // ViewModelの座標配列を更新
-        print("ルート座標: \(coordinates)")
+        
+        coordinates.forEach { coordinate in
+            print("緯度: \(coordinate.latitude), 経度: \(coordinate.longitude)")
+        }
+        
+        
+        
+
     }
 }

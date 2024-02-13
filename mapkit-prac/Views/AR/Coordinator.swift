@@ -10,10 +10,22 @@ import RealityKit
 import ARKit
 import CoreLocation
 
+struct NavigationPoint {
+    var latitude: Double
+    var longitude: Double
+}
+
 class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDelegate{
     var arView: ARView?
     let locationManager = CLLocationManager()
     var currentLocaion: CLLocation?
+    
+    var navigationPoints: [NavigationPoint] = [
+        NavigationPoint(latitude: 35.78070433652879, longitude:139.72440327408145),
+        NavigationPoint(latitude: 35.78030441938045, longitude:139.72451480324366),
+        NavigationPoint(latitude: 35.779874583583975,longitude:139.72462563558756),
+    ]
+    
     
     //ここでlocationManagerの諸々初期設定
     override init(){
@@ -38,45 +50,77 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     }
     
     func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-        //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
-        let coordinate = CLLocationCoordinate2D(latitude: 35.777672, longitude:139.724575)
-        let geoAnchor = ARGeoAnchor(coordinate: coordinate)
-        //実機
-        #if !targetEnvironment(simulator)
-        let anchorEntity = AnchorEntity(anchor: geoAnchor)
-        #else
-        //シュミレータ
-        let anchorEntity = AnchorEntity()
-        #endif
         
-        let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.5))
-        anchorEntity.addChild(modelEntity)
-
-        arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
-        arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
-        
+        navigationPoints .forEach { point in //for文で１つずつオブジェクト化
+            let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+            let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+            // 実機
+#if !targetEnvironment(simulator)
+            let anchorEntity = AnchorEntity(anchor: geoAnchor)
+#else
+            // シミュレータ
+            let anchorEntity = AnchorEntity()
+#endif
+            
+            let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 1.0))
+            anchorEntity.addChild(modelEntity)
+            
+            arView?.session.add(anchor: geoAnchor) // 仮想オブジェクトをどこに固定するか決定
+            arView?.scene.addAnchor(anchorEntity) // オブジェクトを実際に配置
+            
+        }
     }
     
-//    func createSphereEntity() -> ModelEntity{
-//        let sphereMesh = MeshResource.generateSphere(radius: 0.1)
-//        let spherematerial = SimpleMaterial(color: .red, isMetallic: true)
-//        let entity = ModelEntity(mesh: sphereMesh, materials: [spherematerial])
-//        return entity
-//    }
+    
+//    //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
+//    let coordinate = CLLocationCoordinate2D(latitude: 35.78029531129428,longitude:139.72451471491374)
+//    let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+//    //実機
+//#if !targetEnvironment(simulator)
+//    let anchorEntity = AnchorEntity(anchor: geoAnchor)
+//#else
+//    //シュミレータ
+//    let anchorEntity = AnchorEntity()
+//#endif
 //    
-//    func placeNavigation(in arView: ARView,with coordinates: [CLLocationCoordinate2D]){
-//        for coordinate in coordinates {
-//            let geoAnchor = ARGeoAnchor(coordinate: coordinate)
-//            let anchorEntity = AnchorEntity(anchor: geoAnchor)
-//            let naviEntity = createSphereEntity()
-//            anchorEntity.addChild(naviEntity)
-//            
-//            arView.session.add(anchor: geoAnchor)
-//            arView.scene.addAnchor(anchorEntity)
-//        }
-//        
-//        
-        
-//    }
+//    let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.5))
+//    anchorEntity.addChild(modelEntity)
+//    
+//    arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
+//    arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
+//    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    //    func createSphereEntity() -> ModelEntity{
+    //        let sphereMesh = MeshResource.generateSphere(radius: 0.1)
+    //        let spherematerial = SimpleMaterial(color: .red, isMetallic: true)
+    //        let entity = ModelEntity(mesh: sphereMesh, materials: [spherematerial])
+    //        return entity
+    //    }
+    //
+    //    func placeNavigation(in arView: ARView,with coordinates: [CLLocationCoordinate2D]){
+    //        for coordinate in coordinates {
+    //            let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+    //            let anchorEntity = AnchorEntity(anchor: geoAnchor)
+    //            let naviEntity = createSphereEntity()
+    //            anchorEntity.addChild(naviEntity)
+    //
+    //            arView.session.add(anchor: geoAnchor)
+    //            arView.scene.addAnchor(anchorEntity)
+    //        }
+    //
+    //
+    
+    //    }
     
 }
