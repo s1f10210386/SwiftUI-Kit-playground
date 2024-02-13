@@ -6,13 +6,23 @@
 //
 
 import SwiftUI
+import MapKit
 
 
 struct Second: View {
     @EnvironmentObject var viewModel: TextBoxViewModel
 
     
+    
     var body: some View {
+        VStack {
+            Text("Second View")
+            Button(action: {
+            
+            }) {
+                Text("Call Coordinate")
+            }
+        }
         Text("入力されたテキスト: \(viewModel.userInput)")
     }
 }

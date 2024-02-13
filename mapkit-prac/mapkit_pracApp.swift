@@ -10,32 +10,33 @@ import FirebaseCore
 
 
 class AppDelegate: NSObject, UIApplicationDelegate {
-  func application(_ application: UIApplication,
-                   didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-    FirebaseApp.configure()
-
-    return true
-  }
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
+        FirebaseApp.configure()
+        
+        return true
+    }
 }
 
 @main
 struct mapkit_pracApp: App {
-        @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+    @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
     
-        @StateObject var viewModel = AuthViewModel()
-
-        var body: some Scene {
-            WindowGroup {
-                
-                if viewModel.isAuthenticated {
-                    //ログイン後のページに遷移
-//                    HelloView(viewModel: viewModel)
-                    ContentView(viewModel: LocationViewModel())
-                        .environmentObject(TextBoxViewModel())
-                } else {
-                    //ログインじゃないなら
-                    SignInView(viewModel: viewModel)
-                }
+    @StateObject var viewModel = AuthViewModel()
+    @StateObject var locationViewModel = LocationViewModel()
+    
+    
+    var body: some Scene {
+        WindowGroup {
+            
+            if viewModel.isAuthenticated {
+                ContentView()
+                    .environmentObject(TextBoxViewModel())
+                    .environmentObject(locationViewModel)
+            } else {
+                //ログインじゃないなら
+                SignInView(viewModel: viewModel)
             }
         }
+    }
 }

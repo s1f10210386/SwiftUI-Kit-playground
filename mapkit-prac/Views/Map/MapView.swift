@@ -10,8 +10,7 @@ import MapKit
 
 
 struct MapView: UIViewRepresentable {
-    @Binding var route: MKRoute? //Viewでユーザーが選択権を持つために一応Binding
-//    @ObservedObject var locationManager = LocationViewModel()
+    @Binding var route: MKRoute? //Viewでユーザーが選択権を持つために一応Bindingを使う
     
     //このメソッドは、UIViewRepresentableプロトコルが要求するメソッドの一つで
     //SwiftUIによって呼び出され、表示するUIKitビュー(今回はMKMapView)のインスタンスを作成して返す
@@ -56,6 +55,3 @@ struct MapView: UIViewRepresentable {
     }
 }
 
-#Preview {
-    MapView(route: .constant(nil))
-}

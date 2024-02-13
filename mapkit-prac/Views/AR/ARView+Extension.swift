@@ -10,7 +10,6 @@ import RealityKit
 import ARKit
 
 extension ARView {
-    
     //ユーザーがAR体験をスムーズに行えるようにチュートリアルみたいな？ものを表示する
     func setupCoachingOverlay(_ delegate: Coordinator) {
         let coachingOverlay = ARCoachingOverlayView()
@@ -18,9 +17,9 @@ extension ARView {
         coachingOverlay.session = self.session
         coachingOverlay.goal = .geoTracking
         coachingOverlay.delegate = delegate
-
+        
         self.addSubview(coachingOverlay)
-
+        
     }
     
 }

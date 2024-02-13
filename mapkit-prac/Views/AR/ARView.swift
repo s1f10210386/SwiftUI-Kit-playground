@@ -8,6 +8,9 @@
 import SwiftUI
 import RealityKit
 import ARKit
+import Foundation
+import CoreLocation
+
 
 struct ARContentView : View {
     var body: some View {
@@ -16,6 +19,12 @@ struct ARContentView : View {
 }
 
 struct ARViewContainer: UIViewRepresentable {
+    @EnvironmentObject var locationVM: LocationViewModel
+    
+    //これによって渡されたlocationViewModelのインスタンスを内部で保持して、使用できる
+    func makeCoordinator() -> Coordinator {
+        Coordinator(locationViewModel: locationVM)
+    }
     
     func makeUIView(context: Context) -> ARView {
         
@@ -25,31 +34,21 @@ struct ARViewContainer: UIViewRepresentable {
         let config = ARGeoTrackingConfiguration()
         config.planeDetection = .horizontal
         session.run(config)
-        
-        //ARの処理をcoordinatorで行うのでcoordinatorに情報を渡す
+    
+        //arViewの内容をcoordinatorでいじれるように結びつけた。
         context.coordinator.arView = arView
-        //arviewにCoachingOvelayViewを追加する（setUpCoachingOverLay() はARView+Extensionファイルにあります）
+        //arviewの拡張関数CoachingOvelayViewを呼び出す
         arView.setupCoachingOverlay(context.coordinator)
+        
+        //coordinatorのデバック関数を呼び出す
+        context.coordinator.debugLocationViewModel()
         
         return arView
         
     }
     
     func updateUIView(_ uiView: ARView, context: Context) {}
-    //Coordinatorを作成
-    func makeCoordinator() -> Coordinator {
-        Coordinator()
-    }
-
     
 }
-
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ARContentView()
-    }
-}
-#endif
 
 

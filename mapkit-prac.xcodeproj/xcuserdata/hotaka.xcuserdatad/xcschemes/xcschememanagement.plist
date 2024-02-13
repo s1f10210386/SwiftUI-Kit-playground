@@ -28,7 +28,25 @@
 		<key>mapkit-prac.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>2AE0DD652B70EFD300D2436C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AE0DD752B70EFD400D2436C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>2AE0DD7F2B70EFD400D2436C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>

@@ -14,7 +14,7 @@ extension LocationViewModel {
     func searchRouteToTokyoStation(){
         guard let currentLocation = currentLocation else {return}
         
-        let tokyoStationCoordinate = CLLocationCoordinate2D(latitude: 35.777672, longitude: 139.724575)
+        let tokyoStationCoordinate = CLLocationCoordinate2D(latitude: 35.78070433652879, longitude: 139.72440327408145)
         
         let currentPlacemark = MKPlacemark(coordinate: currentLocation.coordinate)
         let tokyoStationPlacemark = MKPlacemark(coordinate: tokyoStationCoordinate)
@@ -45,9 +45,9 @@ extension LocationViewModel {
         
         self.coordinates = coordinates // ViewModelの座標配列を更新
         
-        coordinates.forEach { coordinate in
-            print("緯度: \(coordinate.latitude), 経度: \(coordinate.longitude)")
-        }
+//        self.coordinates.forEach { coordinate in
+//            print("緯度: \(coordinate.latitude), 経度: \(coordinate.longitude)")
+//        }
         
         
         
