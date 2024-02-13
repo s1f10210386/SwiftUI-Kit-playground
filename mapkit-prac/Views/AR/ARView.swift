@@ -5,53 +5,51 @@
 //  Created by 金澤帆高 on 2024/02/07.
 //
 
-
 import SwiftUI
 import RealityKit
 import ARKit
 
+struct ARContentView : View {
+    var body: some View {
+        ARViewContainer().edgesIgnoringSafeArea(.all)
+    }
+}
+
 struct ARViewContainer: UIViewRepresentable {
-    
-    @EnvironmentObject var viewModel: TextBoxViewModel
     
     func makeUIView(context: Context) -> ARView {
         
         let arView = ARView(frame: .zero)
+        //水平面になったらセッションを開始する
+        let session = arView.session
+        let config = ARGeoTrackingConfiguration()
+        config.planeDetection = .horizontal
+        session.run(config)
         
-        //オブジェクトの形状
-        let mesh = MeshResource.generateText(
-            viewModel.userInput,
-            extrusionDepth: 0.1,
-            font: .systemFont(ofSize: 1),
-            containerFrame: CGRect.zero,
-            alignment: .center,
-            lineBreakMode: .byCharWrapping
-        )
-        //オブジェクトの表面の外観
-        let material = SimpleMaterial(color: .white, isMetallic: false)
-        
-        let model = ModelEntity(mesh: mesh, materials: [material])
-        model.transform.translation.y = 0.05
-        
-        //AnchorEntityはオブジェクトをどこに置くのか指定するためのもの
-//        let anchor = AnchorEntity(.plane(.horizontal, classification: .any, minimumBounds: SIMD2<Float>(0.2, 0.2)))
-        let anchor = AnchorEntity(world: SIMD3<Float>(0, 0,-1))
-        
-        
-        
-        //anchorの子階層に立方体のモデルを追加
-        anchor.children.append(model)
-        
-        //ARViewのsceneにアンカー追加
-        arView.scene.anchors.append(anchor)
+        //ARの処理をcoordinatorで行うのでcoordinatorに情報を渡す
+        context.coordinator.arView = arView
+        //arviewにCoachingOvelayViewを追加する（setUpCoachingOverLay() はARView+Extensionファイルにあります）
+        arView.setupCoachingOverlay(context.coordinator)
         
         return arView
         
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {
-        
+    func updateUIView(_ uiView: ARView, context: Context) {}
+    //Coordinatorを作成
+    func makeCoordinator() -> Coordinator {
+        Coordinator()
     }
+
     
 }
+
+#if DEBUG
+struct ContentView_Previews : PreviewProvider {
+    static var previews: some View {
+        ARContentView()
+    }
+}
+#endif
+
 
