@@ -36,7 +36,7 @@ struct NavigationButtonView: View {
                     .padding()
                     .foregroundColor(.white)
                     .sheet(isPresented: $isShowSecond){
-                        Second()
+                        Second(hogeVM: hogeViewModel(locationViewModel: LocationViewModel()))
                             .presentationDetents([.medium, .large])
                     }
                     .background(Color.blue.opacity(0.7))

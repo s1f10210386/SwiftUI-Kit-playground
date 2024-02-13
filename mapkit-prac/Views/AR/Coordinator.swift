@@ -10,35 +10,41 @@ import RealityKit
 import ARKit
 import CoreLocation
 
-struct NavigationPoint {
-    var latitude: Double
-    var longitude: Double
-}
-
 class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDelegate{
     var arView: ARView?
     let locationManager = CLLocationManager()
     var currentLocaion: CLLocation?
+    var locationViewModel: LocationViewModel?
     
-    var navigationPoints: [NavigationPoint] = [
-        NavigationPoint(latitude: 35.78070433652879, longitude:139.72440327408145),
-        NavigationPoint(latitude: 35.78030441938045, longitude:139.72451480324366),
-        NavigationPoint(latitude: 35.779874583583975,longitude:139.72462563558756),
-    ]
-    
-    
-    //ここでlocationManagerの諸々初期設定
-    override init(){
+    init(locationViewModel: LocationViewModel? = nil) {
+        self.locationViewModel = locationViewModel
         super.init()
-        //位置情報の更新を受け取れるようにする
+        setupLocationManager()
+    }
+    
+    private func setupLocationManager() {
         locationManager.delegate = self
-        //小さな移動でも位置情報の更新を行うように
         locationManager.distanceFilter = kCLDistanceFilterNone
-        //した二つで位置情報の取得を開始！
         locationManager.requestLocation()
         locationManager.startUpdatingLocation()
-        
     }
+    
+    //    init(locationViewModel: LocationViewModel) {
+    //        self.locationViewModel = locationViewModel
+    //    }
+    //
+    //    //ここでlocationManagerの諸々初期設定
+    //    override init(){
+    //        super.init()
+    //        //位置情報の更新を受け取れるようにする
+    //        locationManager.delegate = self
+    //        //小さな移動でも位置情報の更新を行うように
+    //        locationManager.distanceFilter = kCLDistanceFilterNone
+    //        //した二つで位置情報の取得を開始！
+    //        locationManager.requestLocation()
+    //        locationManager.startUpdatingLocation()
+    //
+    //    }
     
     //ユーザーのデバイスの位置情報を更新
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -51,7 +57,8 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     
     func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
         
-        navigationPoints .forEach { point in //for文で１つずつオブジェクト化
+        guard let coordinates = locationViewModel?.coordinates else { return }
+        coordinates.forEach { point in //for文で１つずつオブジェクト化
             let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
             let geoAnchor = ARGeoAnchor(coordinate: coordinate)
             // 実機
@@ -72,23 +79,23 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     }
     
     
-//    //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
-//    let coordinate = CLLocationCoordinate2D(latitude: 35.78029531129428,longitude:139.72451471491374)
-//    let geoAnchor = ARGeoAnchor(coordinate: coordinate)
-//    //実機
-//#if !targetEnvironment(simulator)
-//    let anchorEntity = AnchorEntity(anchor: geoAnchor)
-//#else
-//    //シュミレータ
-//    let anchorEntity = AnchorEntity()
-//#endif
-//    
-//    let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.5))
-//    anchorEntity.addChild(modelEntity)
-//    
-//    arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
-//    arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
-//    
+    //    //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
+    //    let coordinate = CLLocationCoordinate2D(latitude: 35.78029531129428,longitude:139.72451471491374)
+    //    let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+    //    //実機
+    //#if !targetEnvironment(simulator)
+    //    let anchorEntity = AnchorEntity(anchor: geoAnchor)
+    //#else
+    //    //シュミレータ
+    //    let anchorEntity = AnchorEntity()
+    //#endif
+    //
+    //    let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.5))
+    //    anchorEntity.addChild(modelEntity)
+    //
+    //    arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
+    //    arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
+    //
     
     
     
