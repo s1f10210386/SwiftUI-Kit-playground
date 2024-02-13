@@ -12,7 +12,7 @@ import ARKit
 extension ARView {
     
     //ユーザーがAR体験をスムーズに行えるようにチュートリアルみたいな？ものを表示する
-    func setupCoachingOverlay(_ delegate: Coordinator) {
+    func setupCoachingOverlay(_ delegate: ARViewContainer.Coordinator) {
         let coachingOverlay = ARCoachingOverlayView()
         coachingOverlay.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         coachingOverlay.session = self.session

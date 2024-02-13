@@ -45,7 +45,7 @@ extension LocationViewModel {
         
         self.coordinates = coordinates // ViewModelの座標配列を更新
         
-        coordinates.forEach { coordinate in
+        self.coordinates.forEach { coordinate in
             print("緯度: \(coordinate.latitude), 経度: \(coordinate.longitude)")
         }
         

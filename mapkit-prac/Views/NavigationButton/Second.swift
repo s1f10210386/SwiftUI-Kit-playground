@@ -11,7 +11,7 @@ import MapKit
 
 struct Second: View {
     @EnvironmentObject var viewModel: TextBoxViewModel
-    @Binding var route: MKRoute?
+
     
     
     var body: some View {
