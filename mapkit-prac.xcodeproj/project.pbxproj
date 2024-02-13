@@ -69,6 +69,7 @@
 		2A1B9EA12B7264220040DB7A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A1B9EA52B7264EB0040DB7A /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		2A3FE0692B7B5732002756D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A620DAF2B739D8F00308D41 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 		2AE0DD682B70EFD300D2436C /* mapkit-prac */ = {
 			isa = PBXGroup;
 			children = (
+				2A3FE0692B7B5732002756D2 /* Info.plist */,
 				2A620DB32B739DC800308D41 /* Repository */,
 				2A1B9E9C2B7261600040DB7A /* ViewModel */,
 				2AD875B22B71E4EA0092F094 /* Views */,
@@ -603,6 +605,7 @@
 				DEVELOPMENT_TEAM = AQATLL3RW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mapkit-prac/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR機能を用いるために使用します";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "投稿した場所を共有するために使用します。";
@@ -635,6 +638,7 @@
 				DEVELOPMENT_TEAM = AQATLL3RW3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "mapkit-prac/Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_NSCameraUsageDescription = "AR機能を用いるために使用します";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "投稿した場所を共有するために使用します。";
