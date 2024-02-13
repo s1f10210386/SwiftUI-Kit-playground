@@ -30,7 +30,7 @@ struct SignInView: View {
 
                 if viewModel.isAuthenticated {
                     // ログイン後のページに遷移
-                    ContentView()
+                    ContentView(viewModel: LocationViewModel())
                         .environmentObject(TextBoxViewModel())
                 }
 

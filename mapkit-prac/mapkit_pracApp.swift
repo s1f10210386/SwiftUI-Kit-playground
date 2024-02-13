@@ -30,7 +30,7 @@ struct mapkit_pracApp: App {
                 if viewModel.isAuthenticated {
                     //ログイン後のページに遷移
 //                    HelloView(viewModel: viewModel)
-                    ContentView()
+                    ContentView(viewModel: LocationViewModel())
                         .environmentObject(TextBoxViewModel())
                 } else {
                     //ログインじゃないなら
