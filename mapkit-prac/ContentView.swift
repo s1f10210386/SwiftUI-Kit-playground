@@ -22,17 +22,27 @@ struct ContentView: View {
             .overlay(
                 Button(action: {
                     viewModel.searchRouteToTokyoStation()
-                    
                 }) {
-                    Text("赤羽公園への経路を検索")
-                        .foregroundColor(.white)
-                        .padding()
-                        .background(Color.blue)
-                        .cornerRadius(10)
+                    VStack{
+                        Text("赤羽公園への経路を検索")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                            .cornerRadius(10)
+                        
+                        Text("座標数: \(viewModel.coordinates.count)")
+                            .foregroundColor(.white)
+                            .padding()
+                            .background(Color.blue)
+                           
+                    }
+                    
                 }
                     .position(x: UIScreen.main.bounds.width / 2, y: 50) // 位置を明示的に指定
                 
             )
+        
+        
         
             .overlay(
                 PostButtonView(),
