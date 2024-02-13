@@ -11,17 +11,18 @@ struct ContentView: View {
     // LocationManagerのインスタンスを生成
     @ObservedObject var locationManager = LocationManager()
     @ObservedObject var userInput = TextBoxViewModel()
-    @ObservedObject var viewModel : LocationViewModel
+    @EnvironmentObject var locationviewModel: LocationViewModel
+    
     
     
     var body: some View {
         
-        MapView(route: $viewModel.route)
+        MapView(route: $locationviewModel.route)
             .edgesIgnoringSafeArea(.all)
         
             .overlay(
                 Button(action: {
-                    viewModel.searchRouteToTokyoStation()
+                    locationviewModel.searchRouteToTokyoStation()
                 }) {
                     VStack{
                         Text("赤羽公園への経路を検索")
@@ -30,11 +31,11 @@ struct ContentView: View {
                             .background(Color.blue)
                             .cornerRadius(10)
                         
-                        Text("座標数: \(viewModel.coordinates.count)")
-                            .foregroundColor(.white)
-                            .padding()
-                            .background(Color.blue)
-                           
+                        ForEach(locationviewModel.coordinates.indices, id: \.self) { index in
+                            let coordinate = locationviewModel.coordinates[index]
+                            Text("座標 \(index): 緯度 \(coordinate.latitude), 経度 \(coordinate.longitude)")
+                        }
+                        
                     }
                     
                 }
@@ -58,6 +59,9 @@ struct ContentView: View {
     
 }
 
-#Preview {
-    ContentView(viewModel: LocationViewModel())
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+            .environmentObject(LocationViewModel())
+    }
 }

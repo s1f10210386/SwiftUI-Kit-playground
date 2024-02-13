@@ -12,22 +12,24 @@ struct NavigationButtonView: View {
     @State var isShowARView = false
     @State var isShowSecond = false
     @State var isShowThird = false
+
     
     var body: some View {
         
         VStack {
             
             Button(action: {
-                            isShowARView = true
-                        }) {
-                            Image(systemName: "cube.transparent")
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.blue.opacity(0.7))
-                                .clipShape(Circle())
-                        }
-                        .fullScreenCover(isPresented: $isShowARView) {
-                            FullScreenARView()                        }
+                isShowARView = true
+                
+            }) {
+                Image(systemName: "cube.transparent")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.blue.opacity(0.7))
+                    .clipShape(Circle())
+            }
+            .fullScreenCover(isPresented: $isShowARView) {
+                FullScreenARView()                        }
             
             Button(action: {
                 isShowSecond = true
@@ -61,11 +63,11 @@ struct NavigationButtonView: View {
         .padding(.trailing, 20) // 画面の右側に余白を追加
         
     }
+    
+    
 }
 
 
 
 
-#Preview {
-    NavigationButtonView()
-}
+

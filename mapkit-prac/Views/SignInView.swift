@@ -11,6 +11,8 @@ struct SignInView: View {
     @State private var email: String = ""
     @State private var password: String = ""
     @ObservedObject var viewModel: AuthViewModel
+    
+//    @State private var navigateToContentView = false
 
     var body: some View {
         NavigationView {
@@ -28,11 +30,14 @@ struct SignInView: View {
                     
                 }
 
-                if viewModel.isAuthenticated {
-                    // ログイン後のページに遷移
-                    ContentView(viewModel: LocationViewModel())
-                        .environmentObject(TextBoxViewModel())
-                }
+//                if viewModel.isAuthenticated {
+//                    // ログイン後のページに遷移
+//                    ContentView()
+//                        .environmentObject(TextBoxViewModel())
+//                }
+//                
+//                NavigationLink(destination: ContentView().environmentObject(TextBoxViewModel()), isActive: $navigateToContentView) { EmptyView() }
+//                            }
 
                 // 新規登録画面への遷移ボタン
                 NavigationLink(destination: SignUpView(viewModel: viewModel)) {
