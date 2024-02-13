@@ -9,8 +9,6 @@ import SwiftUI
 
 struct ContentView: View {
     // LocationManagerのインスタンスを生成
-    @ObservedObject var locationManager = LocationManager()
-    @ObservedObject var userInput = TextBoxViewModel()
     @ObservedObject var viewModel : LocationViewModel
     
     

@@ -23,6 +23,8 @@
 		2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */; };
 		2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* Second.swift */; };
 		2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AAB2B71E9BA00981749 /* Third.swift */; };
+		2AD06E202B7B6E7900FC9CD4 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD06E1F2B7B6E7900FC9CD4 /* Coordinator.swift */; };
+		2AD06E222B7B6E9C00FC9CD4 /* ARView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD06E212B7B6E9C00FC9CD4 /* ARView+Extension.swift */; };
 		2AD875AF2B71D3380092F094 /* TextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875AE2B71D3380092F094 /* TextBoxView.swift */; };
 		2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */; };
 		2AD875B72B71E7070092F094 /* PostButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875B62B71E7070092F094 /* PostButtonView.swift */; };
@@ -76,6 +78,8 @@
 		2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxViewModel.swift; sourceTree = "<group>"; };
 		2ABA8AA92B71E9B400981749 /* Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Second.swift; sourceTree = "<group>"; };
 		2ABA8AAB2B71E9BA00981749 /* Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Third.swift; sourceTree = "<group>"; };
+		2AD06E1F2B7B6E7900FC9CD4 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		2AD06E212B7B6E9C00FC9CD4 /* ARView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ARView+Extension.swift"; sourceTree = "<group>"; };
 		2AD875AE2B71D3380092F094 /* TextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxView.swift; sourceTree = "<group>"; };
 		2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
 		2AD875B62B71E7070092F094 /* PostButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostButtonView.swift; sourceTree = "<group>"; };
@@ -166,6 +170,8 @@
 			children = (
 				2A620DB52B739E2F00308D41 /* ARView.swift */,
 				2A01CA1C2B7AA0310030AF4C /* FullScreenARView.swift */,
+				2AD06E1F2B7B6E7900FC9CD4 /* Coordinator.swift */,
+				2AD06E212B7B6E9C00FC9CD4 /* ARView+Extension.swift */,
 			);
 			path = AR;
 			sourceTree = "<group>";
@@ -419,6 +425,7 @@
 			files = (
 				2AE0DD962B70F00D00D2436C /* LocationManagerRepository.swift in Sources */,
 				2AE0DD6C2B70EFD300D2436C /* ContentView.swift in Sources */,
+				2AD06E222B7B6E9C00FC9CD4 /* ARView+Extension.swift in Sources */,
 				2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */,
 				2AE0DD6A2B70EFD300D2436C /* mapkit_pracApp.swift in Sources */,
 				2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */,
@@ -434,6 +441,7 @@
 				2A01CA1D2B7AA0310030AF4C /* FullScreenARView.swift in Sources */,
 				2AF2740F2B73D05A00D9A97E /* UserViewModel.swift in Sources */,
 				2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */,
+				2AD06E202B7B6E7900FC9CD4 /* Coordinator.swift in Sources */,
 				2A01CA212B7AD0E30030AF4C /* Location+Extension.swift in Sources */,
 				2A01CA1F2B7AADEF0030AF4C /* LocationViewModel.swift in Sources */,
 				2AF2740D2B73CFBF00D9A97E /* UserModel.swift in Sources */,

@@ -9,13 +9,20 @@ import SwiftUI
 
 struct FullScreenARView: View {
     @Environment(\.presentationMode) var presentationMode
+//    @ObservedObject var locationViewModel: LocationViewModel
+    var coordinator = Coordinator(locationViewModel: LocationViewModel())
 
     var body: some View {
         VStack {
             // ここにARViewContainerを配置
-            ARViewContainer()
+            ARViewContainer(locationViewModel: LocationViewModel())
                 .edgesIgnoringSafeArea(.all) // フルスクリーン表示をする場合、Safe Areaを無視する
+                .environmentObject(coordinator)
 
+            Button("Place Navigation Points") {
+                coordinator.userDidTapButton()
+            }
+            
             // 閉じるボタン
             Button(action: {
                 // ビューを閉じる
