@@ -7,8 +7,10 @@
 
 import SwiftUI
 
+
 struct Second: View {
     @EnvironmentObject var viewModel: TextBoxViewModel
+
     
     var body: some View {
         Text("入力されたテキスト: \(viewModel.userInput)")
