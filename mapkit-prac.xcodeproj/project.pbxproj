@@ -21,6 +21,7 @@
 		2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DB12B739D9800308D41 /* CoreLocation.framework */; };
 		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
 		2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */; };
+		2A8616FC2B7CC4D400641030 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8616FB2B7CC4D400641030 /* temp.swift */; };
 		2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* Second.swift */; };
 		2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AAB2B71E9BA00981749 /* Third.swift */; };
 		2AD875AF2B71D3380092F094 /* TextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875AE2B71D3380092F094 /* TextBoxView.swift */; };
@@ -76,6 +77,7 @@
 		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxViewModel.swift; sourceTree = "<group>"; };
+		2A8616FB2B7CC4D400641030 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
 		2ABA8AA92B71E9B400981749 /* Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Second.swift; sourceTree = "<group>"; };
 		2ABA8AAB2B71E9BA00981749 /* Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Third.swift; sourceTree = "<group>"; };
 		2AD875AE2B71D3380092F094 /* TextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxView.swift; sourceTree = "<group>"; };
@@ -171,6 +173,7 @@
 				2A620DB52B739E2F00308D41 /* ARView.swift */,
 				2AE65FFE2B7B89B600371C26 /* ARView+Extension.swift */,
 				2AE65FFC2B7B897D00371C26 /* Coordinator.swift */,
+				2A8616FB2B7CC4D400641030 /* temp.swift */,
 				2A01CA1C2B7AA0310030AF4C /* FullScreenARView.swift */,
 			);
 			path = AR;
@@ -432,6 +435,7 @@
 				2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */,
 				2AE65FFF2B7B89B600371C26 /* ARView+Extension.swift in Sources */,
 				2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */,
+				2A8616FC2B7CC4D400641030 /* temp.swift in Sources */,
 				2A1B9E9E2B72626D0040DB7A /* AuthViewModel.swift in Sources */,
 				2AF274112B73D15300D9A97E /* TextView.swift in Sources */,
 				2A1B9EA62B7264EB0040DB7A /* HelloView.swift in Sources */,
