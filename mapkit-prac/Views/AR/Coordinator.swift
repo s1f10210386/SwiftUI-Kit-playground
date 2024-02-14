@@ -72,6 +72,18 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     }
     
     private func updateARView(with coordinates: [CLLocationCoordinate2D]) {
+        
+        //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
+        let coordinate = CLLocationCoordinate2D(latitude: 35.78070433652879, longitude: 139.72440327408145)
+        let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+        let anchorEntity = AnchorEntity(anchor: geoAnchor)
+        let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 3.0))
+        anchorEntity.addChild(modelEntity)
+        
+        arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
+        arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
+        
+        
         DispatchQueue.main.async {
             coordinates.forEach { coordinate in
                 let geoAnchor = ARGeoAnchor(coordinate: coordinate)
@@ -80,7 +92,9 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
 #else
                 let anchorEntity = AnchorEntity()
 #endif
-                let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 0.1))
+                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5))
+                let material = SimpleMaterial(color: .blue, isMetallic: false)
+                modelEntity.components[ModelComponent.self]?.materials = [material]
                 anchorEntity.addChild(modelEntity)
                 
                 self.arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
