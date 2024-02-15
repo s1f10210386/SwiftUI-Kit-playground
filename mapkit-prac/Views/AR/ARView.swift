@@ -47,8 +47,25 @@ struct ARViewContainer: UIViewRepresentable {
         
     }
     
-    func updateUIView(_ uiView: ARView, context: Context) {}
-    
+    func updateUIView(_ uiView: ARView, context: Context) {
+        let session = uiView.session
+           session.pause() // セッションを一時停止
+           
+           if locationVM.isUsingWorldTracking {
+               if let config = ARWorldTrackingConfiguration.isSupported ? ARWorldTrackingConfiguration() : nil {
+                   config.planeDetection = [.horizontal] // planeDetectionを設定
+                   session.run(config, options: [.resetTracking, .removeExistingAnchors])
+               }
+           } else {
+               // ARGeoTrackingConfigurationはplaneDetectionプロパティを持たないため、そのまま実行
+               if ARGeoTrackingConfiguration.isSupported {
+                   let config = ARGeoTrackingConfiguration()
+                   // ARGeoTrackingConfiguration固有の設定をここで行う
+                   session.run(config, options: [.resetTracking, .removeExistingAnchors])
+               }
+           }
+    }
+        
 }
 
 

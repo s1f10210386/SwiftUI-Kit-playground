@@ -12,6 +12,7 @@ import MapKit
 class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var locationManager = CLLocationManager()
     @Published var currentLocation: CLLocation?
+    @Published var isUsingWorldTracking: Bool = false
     @Published var route: MKRoute? //ViewModel内でまずは結果を保持(ロジックについてはExtension)更新をViewに自動通知するように
     @Published var coordinates = [CLLocationCoordinate2D](){ //ルートの座標を保持
         didSet {
@@ -43,5 +44,11 @@ class LocationViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
     }
+    
+    func toggleSessionType() {
+        isUsingWorldTracking.toggle()
+        print("デバック: isUsingWorldTrackingが更新")
+    }
+    
     
 }

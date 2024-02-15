@@ -95,7 +95,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
         
         //start +90するから想定では現実世界の北
         let geoAnchor = ARGeoAnchor(coordinate: start)
-//        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
+        //        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
         if let modelEntity = try? Entity.loadModel(named: "arrow") {
             modelEntity.scale = SIMD3<Float>(0.2, 0.2, 0.2)
             modelEntity.transform.rotation = simd_quatf(angle: .pi/2 - 2.204430958886927, axis: [0, 1, 0])
@@ -107,7 +107,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
         
         //mid -90するから想定では現実世界の南
         let geoAnchor2 = ARGeoAnchor(coordinate: mid)
-//        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
+        //        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
         if let modelEntity2 = try? Entity.loadModel(named: "arrow") {
             modelEntity2.scale = SIMD3<Float>(0.1, 0.1, 0.1)
             modelEntity2.transform.rotation = simd_quatf(angle: .pi/2 - 0.6336346320920306, axis: [0, 1, 0])
@@ -120,72 +120,77 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
         
         
         DispatchQueue.main.async {
-            coordinates.forEach { coordinate in
-                let geoAnchor = ARGeoAnchor(coordinate: coordinate) //固定点
-#if !targetEnvironment(simulator)
-                let anchorEntity = AnchorEntity(anchor: geoAnchor) //オブジェクトの枠組み
-#else
-                let anchorEntity = AnchorEntity()
-#endif
-//                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5)) //オブジェ
-                let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:1))
-                let material = SimpleMaterial(color: .blue, isMetallic: false)
-                modelEntity.components[ModelComponent.self]?.materials = [material]
-                anchorEntity.addChild(modelEntity)
+            for i in 0..<coordinates.count - 1 {
+                let start = coordinates[i]
+                let end = coordinates[i + 1]
                 
-                self.arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
-                self.arView?.scene.addAnchor(anchorEntity)
+                //ラジアン計算
+                let bearingRadians = atan2(end.longitude - start.longitude, end.latitude - start.latitude)
+                
+                if let modelEntity = try? Entity.loadModel(named: "arrow") {
+                    modelEntity.scale = SIMD3<Float>(0.2, 0.2, 0.2)
+                    modelEntity.transform.rotation = simd_quatf(angle: .pi/2 - Float(bearingRadians), axis: [0, 1, 0])
+                    
+                    let geoAnchor = ARGeoAnchor(coordinate: start)
+                    let anchorEntity = AnchorEntity(anchor: geoAnchor) // 適切な位置に配置
+                    anchorEntity.addChild(modelEntity)
+                    
+                    self.arView?.session.add(anchor: geoAnchor)
+                    self.arView?.scene.addAnchor(anchorEntity)
+                    
+                    
+                }
+                
             }
             
+            
+            //        DispatchQueue.main.async {
+            //            coordinates.forEach { coordinate in
+            //                let geoAnchor = ARGeoAnchor(coordinate: coordinate) //固定点
+            //#if !targetEnvironment(simulator)
+            //                let anchorEntity = AnchorEntity(anchor: geoAnchor) //オブジェクトの枠組み
+            //#else
+            //                let anchorEntity = AnchorEntity()
+            //#endif
+            ////                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5)) //オブジェ
+            //                let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:1))
+            //                let material = SimpleMaterial(color: .blue, isMetallic: false)
+            //                modelEntity.components[ModelComponent.self]?.materials = [material]
+            //                anchorEntity.addChild(modelEntity)
+            //
+            //                self.arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
+            //                self.arView?.scene.addAnchor(anchorEntity)
+            //            }
+            //
+            //        }
+            
         }
-
-    
-//        DispatchQueue.main.async {
-//            coordinates.forEach { coordinate in
-//                let geoAnchor = ARGeoAnchor(coordinate: coordinate) //固定点
-//#if !targetEnvironment(simulator)
-//                let anchorEntity = AnchorEntity(anchor: geoAnchor) //オブジェクトの枠組み
-//#else
-//                let anchorEntity = AnchorEntity()
-//#endif
-////                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5)) //オブジェ
-//                let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:1))
-//                let material = SimpleMaterial(color: .blue, isMetallic: false)
-//                modelEntity.components[ModelComponent.self]?.materials = [material]
-//                anchorEntity.addChild(modelEntity)
-//                
-//                self.arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
-//                self.arView?.scene.addAnchor(anchorEntity)
-//            }
-//            
-//        }
+        
+        func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+            self.currentLocation = locations.first
+        }
+        
+        func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+            print(error)
+        }
         
     }
+    //        navigationPoints .forEach { point in //for文で１つずつオブジェクト化
+    //            let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
+    //            let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+    //            // 実機
+    //#if !targetEnvironment(simulator)
+    //            let anchorEntity = AnchorEntity(anchor: geoAnchor)
+    //#else
+    //            // シミュレータ
+    //            let anchorEntity = AnchorEntity()
+    //#endif
+    //
+    //            let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 1.0))
+    //            anchorEntity.addChild(modelEntity)
+    //
+    //            arView?.session.add(anchor: geoAnchor) // 仮想オブジェクトをどこに固定するか決定
+    //            arView?.scene.addAnchor(anchorEntity) // オブジェクトを実際に配置
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        self.currentLocation = locations.first
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print(error)
-    }
     
 }
-//        navigationPoints .forEach { point in //for文で１つずつオブジェクト化
-//            let coordinate = CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude)
-//            let geoAnchor = ARGeoAnchor(coordinate: coordinate)
-//            // 実機
-//#if !targetEnvironment(simulator)
-//            let anchorEntity = AnchorEntity(anchor: geoAnchor)
-//#else
-//            // シミュレータ
-//            let anchorEntity = AnchorEntity()
-//#endif
-//
-//            let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 1.0))
-//            anchorEntity.addChild(modelEntity)
-//
-//            arView?.session.add(anchor: geoAnchor) // 仮想オブジェクトをどこに固定するか決定
-//            arView?.scene.addAnchor(anchorEntity) // オブジェクトを実際に配置
-
-
