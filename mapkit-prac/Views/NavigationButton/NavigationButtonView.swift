@@ -38,7 +38,7 @@ struct NavigationButtonView: View {
                     .padding()
                     .foregroundColor(.white)
                     .sheet(isPresented: $isShowSecond){
-                        Second()
+                        TestView()
                             .presentationDetents([.medium, .large])
                     }
                     .background(Color.blue.opacity(0.7))

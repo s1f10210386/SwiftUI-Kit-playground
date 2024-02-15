@@ -22,7 +22,7 @@
 		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
 		2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */; };
 		2A8616FC2B7CC4D400641030 /* temp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A8616FB2B7CC4D400641030 /* temp.swift */; };
-		2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* Second.swift */; };
+		2ABA8AAA2B71E9B400981749 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* TestView.swift */; };
 		2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AAB2B71E9BA00981749 /* Third.swift */; };
 		2AD875AF2B71D3380092F094 /* TextBoxView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875AE2B71D3380092F094 /* TextBoxView.swift */; };
 		2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */; };
@@ -78,7 +78,7 @@
 		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxViewModel.swift; sourceTree = "<group>"; };
 		2A8616FB2B7CC4D400641030 /* temp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = temp.swift; sourceTree = "<group>"; };
-		2ABA8AA92B71E9B400981749 /* Second.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Second.swift; sourceTree = "<group>"; };
+		2ABA8AA92B71E9B400981749 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2ABA8AAB2B71E9BA00981749 /* Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Third.swift; sourceTree = "<group>"; };
 		2AD875AE2B71D3380092F094 /* TextBoxView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxView.swift; sourceTree = "<group>"; };
 		2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationButtonView.swift; sourceTree = "<group>"; };
@@ -210,7 +210,7 @@
 			isa = PBXGroup;
 			children = (
 				2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */,
-				2ABA8AA92B71E9B400981749 /* Second.swift */,
+				2ABA8AA92B71E9B400981749 /* TestView.swift */,
 				2ABA8AAB2B71E9BA00981749 /* Third.swift */,
 			);
 			path = NavigationButton;
@@ -434,7 +434,7 @@
 				2A620DB62B739E2F00308D41 /* ARView.swift in Sources */,
 				2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */,
 				2AE65FFF2B7B89B600371C26 /* ARView+Extension.swift in Sources */,
-				2ABA8AAA2B71E9B400981749 /* Second.swift in Sources */,
+				2ABA8AAA2B71E9B400981749 /* TestView.swift in Sources */,
 				2A8616FC2B7CC4D400641030 /* temp.swift in Sources */,
 				2A1B9E9E2B72626D0040DB7A /* AuthViewModel.swift in Sources */,
 				2AF274112B73D15300D9A97E /* TextView.swift in Sources */,

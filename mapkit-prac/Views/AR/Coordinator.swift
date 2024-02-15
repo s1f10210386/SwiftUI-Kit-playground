@@ -71,28 +71,71 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
             .store(in: &cancellables)
     }
 
+    
+    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        // コーチングオーバーレイが非アクティブになったら、最新の座標でARビューを更新する
+        if let coordinates = self.locationViewModel?.coordinates {
+            updateARView(with: coordinates)
+        } else {
+            print("最新の座標データがまだ利用可能ではありません。")
+        }
+    }
+    
+    
     private func updateARView(with coordinates: [CLLocationCoordinate2D]) {
         
         //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
-        let coordinate = CLLocationCoordinate2D(latitude: 35.78070433652879, longitude: 139.72440327408145)
-        let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+        let start = CLLocationCoordinate2D(latitude: 35.7794403213241, longitude: 139.72490198235678)
+        let end = CLLocationCoordinate2D(latitude: 35.77814635695832, longitude: 139.72507954093481)
+        
+        //start
+        let geoAnchor = ARGeoAnchor(coordinate: start)
+#if !targetEnvironment(simulator)
         let anchorEntity = AnchorEntity(anchor: geoAnchor)
+#else
+        let anchorEntity = AnchorEntity()
+#endif
         let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 3.0))
         anchorEntity.addChild(modelEntity)
         
         arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
         arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
         
+        //end
+        let geoAnchor2 = ARGeoAnchor(coordinate: end)
+#if !targetEnvironment(simulator)
+        let anchorEntity2 = AnchorEntity(anchor: geoAnchor2)
+#else
+        let anchorEntity2 = AnchorEntity()
+#endif
+        let modelEntity2 = ModelEntity(mesh: MeshResource.generateBox(size: 3.0))
+        anchorEntity2.addChild(modelEntity2)
+        
+        arView?.session.add(anchor: geoAnchor2) //仮想オブジェクトをどこに固定するか決定
+        arView?.scene.addAnchor(anchorEntity2) //オブジェクトを実際に配置
+        
+        
+        
+        //線のやーーつ
+//        let geoAnchor3 = ARGeoAnchor(coordinate:)
+        //平面
+        let planeMesh = MeshResource.generatePlane(width: 0.05, depth: 10)
+        //赤色
+        let material = SimpleMaterial(color: .red, isMetallic: false)
+        //オブジェのエンティティ完成
+        let planeEntity = ModelEntity(mesh: planeMesh, materials: [material])
+        
+        
         
         DispatchQueue.main.async {
             coordinates.forEach { coordinate in
-                let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+                let geoAnchor = ARGeoAnchor(coordinate: coordinate) //固定点
 #if !targetEnvironment(simulator)
-                let anchorEntity = AnchorEntity(anchor: geoAnchor)
+                let anchorEntity = AnchorEntity(anchor: geoAnchor) //オブジェクトの枠組み
 #else
                 let anchorEntity = AnchorEntity()
 #endif
-                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5))
+                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5)) //オブジェ
                 let material = SimpleMaterial(color: .blue, isMetallic: false)
                 modelEntity.components[ModelComponent.self]?.materials = [material]
                 anchorEntity.addChild(modelEntity)
@@ -102,6 +145,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
             }
 
         }
+        
     }
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -110,15 +154,6 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
-    }
-
-    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-        // コーチングオーバーレイが非アクティブになったら、最新の座標でARビューを更新する
-        if let coordinates = self.locationViewModel?.coordinates {
-            updateARView(with: coordinates)
-        } else {
-            print("最新の座標データがまだ利用可能ではありません。")
-        }
     }
 
 }
