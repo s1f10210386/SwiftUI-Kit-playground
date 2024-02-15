@@ -52,7 +52,8 @@ struct NavigationButtonView: View {
                     .padding()
                     .foregroundColor(.white)
                     .sheet(isPresented: $isShowThird){
-                        HelloView(viewModel: AuthViewModel())
+                        ObjectARContentView()
+//                        HelloView(viewModel: AuthViewModel())
                             .presentationDetents([.medium, .large])
                     }
                     .background(Color.blue.opacity(0.7))

@@ -13,14 +13,7 @@ struct FullScreenARView: View {
     var body: some View {
         VStack {
             ARViewContainer().edgesIgnoringSafeArea(.all)
-//            Button("Switch to Indoor Mode") {
-//                viewModel.startARSession()
-//            }
-//            .padding()
-//            .background(Color.blue)
-//            .foregroundColor(.white)
-//            .cornerRadius(8)
-//            
+            
             // 閉じるボタン
             Button(action: {
                 // ビューを閉じる

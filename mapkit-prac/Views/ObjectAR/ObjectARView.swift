@@ -9,8 +9,23 @@ import SwiftUI
 import RealityKit
 import ARKit
 
+
+struct ObjectARContentView: View {
+    var viewModel = ObjectARViewModel()
+
+    var body: some View {
+        VStack {
+            ObjectARViewContainer(viewModel: viewModel)
+                .edgesIgnoringSafeArea(.all)
+            Button("Start AR Session") {
+                viewModel.startARSession()
+            }
+        }
+    }
+}
+
 struct ObjectARViewContainer: UIViewRepresentable {
-    @ObservedObject var viewModel: ARViewModel
+    @ObservedObject var viewModel: ObjectARViewModel
     
     func makeUIView(context: Context) -> ARView {
         viewModel.arView.session.delegate = context.coordinator
@@ -24,9 +39,9 @@ struct ObjectARViewContainer: UIViewRepresentable {
     }
     
     class Coordinator: NSObject, ARSessionDelegate {
-        var parent: ARViewContainer
+        var parent: ObjectARViewContainer
         
-        init(_ parent: ARViewContainer) {
+        init(_ parent: ObjectARViewContainer) {
             self.parent = parent
         }
         

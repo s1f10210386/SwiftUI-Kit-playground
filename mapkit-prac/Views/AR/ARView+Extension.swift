@@ -18,6 +18,13 @@ extension ARView {
             session.run(configuration)
         }
     
+    func startWorldTrackingSession() {
+            let session = self.session
+            let configuration = ARWorldTrackingConfiguration()
+            configuration.planeDetection = .horizontal
+            session.run(configuration)
+        }
+    
     //ユーザーがAR体験をスムーズに行えるようにチュートリアルみたいな？ものを表示する
     func setupCoachingOverlay(_ delegate: Coordinator) {
         let coachingOverlay = ARCoachingOverlayView()

@@ -17,6 +17,8 @@
 		2A1B9EA22B7264220040DB7A /* SignUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA12B7264220040DB7A /* SignUpView.swift */; };
 		2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */; };
 		2A1B9EA62B7264EB0040DB7A /* HelloView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A1B9EA52B7264EB0040DB7A /* HelloView.swift */; };
+		2A21A5AE2B7EB6620082813C /* ObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A21A5AD2B7EB6620082813C /* ObjectARView.swift */; };
+		2A21A5B02B7EB6810082813C /* ObjectARViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A21A5AF2B7EB6810082813C /* ObjectARViewModel.swift */; };
 		2A620DB02B739D8F00308D41 /* ARKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DAF2B739D8F00308D41 /* ARKit.framework */; };
 		2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DB12B739D9800308D41 /* CoreLocation.framework */; };
 		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
@@ -72,6 +74,8 @@
 		2A1B9EA12B7264220040DB7A /* SignUpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpView.swift; sourceTree = "<group>"; };
 		2A1B9EA32B7264A50040DB7A /* ResetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPasswordView.swift; sourceTree = "<group>"; };
 		2A1B9EA52B7264EB0040DB7A /* HelloView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelloView.swift; sourceTree = "<group>"; };
+		2A21A5AD2B7EB6620082813C /* ObjectARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectARView.swift; sourceTree = "<group>"; };
+		2A21A5AF2B7EB6810082813C /* ObjectARViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ObjectARViewModel.swift; sourceTree = "<group>"; };
 		2A3FE0692B7B5732002756D2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		2A620DAF2B739D8F00308D41 /* ARKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ARKit.framework; path = System/Library/Frameworks/ARKit.framework; sourceTree = SDKROOT; };
 		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -152,6 +156,15 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		2A21A5AC2B7EB53A0082813C /* ObjectAR */ = {
+			isa = PBXGroup;
+			children = (
+				2A21A5AD2B7EB6620082813C /* ObjectARView.swift */,
+				2A21A5AF2B7EB6810082813C /* ObjectARViewModel.swift */,
+			);
+			path = ObjectAR;
+			sourceTree = "<group>";
+		};
 		2A620DAE2B739D8F00308D41 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -183,6 +196,7 @@
 		2AD875B22B71E4EA0092F094 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				2A21A5AC2B7EB53A0082813C /* ObjectAR */,
 				2A620DB42B739E2100308D41 /* AR */,
 				2AD875B52B71E6F00092F094 /* PostButton */,
 				2AD875AE2B71D3380092F094 /* TextBoxView.swift */,
@@ -429,6 +443,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2A21A5AE2B7EB6620082813C /* ObjectARView.swift in Sources */,
 				2AE0DD962B70F00D00D2436C /* LocationManagerRepository.swift in Sources */,
 				2AE0DD6C2B70EFD300D2436C /* ContentView.swift in Sources */,
 				2AE0DD942B70EFFC00D2436C /* MapView.swift in Sources */,
@@ -436,6 +451,7 @@
 				2AD875B12B71E3C80092F094 /* NavigationButtonView.swift in Sources */,
 				2A620DB62B739E2F00308D41 /* ARView.swift in Sources */,
 				2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */,
+				2A21A5B02B7EB6810082813C /* ObjectARViewModel.swift in Sources */,
 				2AE65FFF2B7B89B600371C26 /* ARView+Extension.swift in Sources */,
 				2ABA8AAA2B71E9B400981749 /* TestView.swift in Sources */,
 				2A1B9E9E2B72626D0040DB7A /* AuthViewModel.swift in Sources */,
