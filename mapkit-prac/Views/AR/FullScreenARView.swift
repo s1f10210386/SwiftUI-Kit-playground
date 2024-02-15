@@ -9,20 +9,12 @@ import SwiftUI
 
 struct FullScreenARView: View {
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var locationVM: LocationViewModel
     
     var body: some View {
         VStack {
             // ここにARViewContainerを配置
             ARViewContainer()
                 .edgesIgnoringSafeArea(.all) // フルスクリーン表示をする場合、Safe Areaを無視する
-            
-            
-            VStack {
-                Button("セッション切り替え") {
-                    locationVM.toggleSessionType()
-                }
-            }
             
             // 閉じるボタン
             Button(action: {
