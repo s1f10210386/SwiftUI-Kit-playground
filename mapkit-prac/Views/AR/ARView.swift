@@ -13,14 +13,14 @@ import CoreLocation
 
 
 struct ARContentView : View {
+    
     var body: some View {
         ARViewContainer().edgesIgnoringSafeArea(.all)
     }
 }
 
 struct ARViewContainer: UIViewRepresentable {
-    @EnvironmentObject var locationVM: LocationViewModel
-    
+    @EnvironmentObject var locationVM: LocationViewModel    
     //これによって渡されたlocationViewModelのインスタンスを内部で保持して、使用できる
     func makeCoordinator() -> Coordinator {
         Coordinator(locationViewModel: locationVM)
@@ -46,6 +46,7 @@ struct ARViewContainer: UIViewRepresentable {
         return arView
         
     }
+    
     
     func updateUIView(_ uiView: ARView, context: Context) {}
         

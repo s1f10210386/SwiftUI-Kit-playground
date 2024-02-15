@@ -9,13 +9,19 @@ import SwiftUI
 
 struct FullScreenARView: View {
     @Environment(\.presentationMode) var presentationMode
-    
+    @StateObject private var viewModel = ARViewModel()
+
     var body: some View {
         VStack {
-            // ここにARViewContainerを配置
-            ARViewContainer()
-                .edgesIgnoringSafeArea(.all) // フルスクリーン表示をする場合、Safe Areaを無視する
-            
+            ARViewContainer().edgesIgnoringSafeArea(.all)
+//            Button("Switch to Indoor Mode") {
+//                viewModel.startARSession()
+//            }
+//            .padding()
+//            .background(Color.blue)
+//            .foregroundColor(.white)
+//            .cornerRadius(8)
+//            
             // 閉じるボタン
             Button(action: {
                 // ビューを閉じる
