@@ -30,10 +30,7 @@ struct ARViewContainer: UIViewRepresentable {
         
         let arView = ARView(frame: .zero)
         //水平面になったらセッションを開始する
-        let session = arView.session
-        let config = ARGeoTrackingConfiguration()
-        config.planeDetection = .horizontal
-        session.run(config)
+        arView.startGeoTrackingSession()
     
         //arViewの内容をcoordinatorでいじれるように結びつけた。
         context.coordinator.arView = arView

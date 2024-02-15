@@ -9,7 +9,6 @@ import SwiftUI
 
 struct FullScreenARView: View {
     @Environment(\.presentationMode) var presentationMode
-    @StateObject private var viewModel = ARViewModel()
 
     var body: some View {
         VStack {

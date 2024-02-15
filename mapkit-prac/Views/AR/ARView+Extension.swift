@@ -10,6 +10,14 @@ import RealityKit
 import ARKit
 
 extension ARView {
+    
+    func startGeoTrackingSession() {
+            let session = self.session
+            let configuration = ARGeoTrackingConfiguration()
+            configuration.planeDetection = .horizontal
+            session.run(configuration)
+        }
+    
     //ユーザーがAR体験をスムーズに行えるようにチュートリアルみたいな？ものを表示する
     func setupCoachingOverlay(_ delegate: Coordinator) {
         let coachingOverlay = ARCoachingOverlayView()
