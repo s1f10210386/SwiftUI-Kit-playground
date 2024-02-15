@@ -98,7 +98,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
 //        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
         if let modelEntity = try? Entity.loadModel(named: "arrow") {
             modelEntity.scale = SIMD3<Float>(0.2, 0.2, 0.2)
-            modelEntity.transform.rotation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
+            modelEntity.transform.rotation = simd_quatf(angle: .pi/2 + 0.4332362029517845, axis: [0, 1, 0])
             let anchorEntity = AnchorEntity(anchor: geoAnchor) // 適切な位置に配置
             anchorEntity.addChild(modelEntity)
             arView?.session.add(anchor: geoAnchor)
@@ -110,7 +110,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
 //        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
         if let modelEntity2 = try? Entity.loadModel(named: "arrow") {
             modelEntity2.scale = SIMD3<Float>(0.1, 0.1, 0.1)
-            modelEntity2.transform.rotation = simd_quatf(angle: -.pi / 2, axis: [0, 1, 0])
+            modelEntity2.transform.rotation = simd_quatf(angle: .pi/2 + 2.0040325297466812, axis: [0, 1, 0])
             let anchorEntity2 = AnchorEntity(anchor: geoAnchor2) // 適切な位置に配置
             anchorEntity2.addChild(modelEntity2)
             
