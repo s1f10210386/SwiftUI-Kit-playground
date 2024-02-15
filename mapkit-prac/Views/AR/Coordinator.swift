@@ -71,28 +71,66 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
             .store(in: &cancellables)
     }
     
+    
+    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
+        // コーチングオーバーレイが非アクティブになったら、最新の座標でARビューを更新する
+        if let coordinates = self.locationViewModel?.coordinates {
+            updateARView(with: coordinates)
+        } else {
+            print("最新の座標データがまだ利用可能ではありません。")
+        }
+    }
+    
+    
     private func updateARView(with coordinates: [CLLocationCoordinate2D]) {
         
         //表示したい場所の緯度と経度を入力(とりあえず赤羽公園)
-        let coordinate = CLLocationCoordinate2D(latitude: 35.78070433652879, longitude: 139.72440327408145)
-        let geoAnchor = ARGeoAnchor(coordinate: coordinate)
-        let anchorEntity = AnchorEntity(anchor: geoAnchor)
-        let modelEntity = ModelEntity(mesh: MeshResource.generateBox(size: 3.0))
-        anchorEntity.addChild(modelEntity)
+        let start = CLLocationCoordinate2D(latitude: 35.77944657902831, longitude: 139.72491032371784)
+        let end = CLLocationCoordinate2D(latitude: 35.78030260912687, longitude: 139.7245143723517)
+        let mid = CLLocationCoordinate2D(latitude: 35.77987459407759, longitude: 139.72471234803476)
         
-        arView?.session.add(anchor: geoAnchor) //仮想オブジェクトをどこに固定するか決定
-        arView?.scene.addAnchor(anchorEntity) //オブジェクトを実際に配置
+        let startRad: Float = .pi/2
+        let midRad: Float = -.pi/2
         
         
+        //start +90するから想定では現実世界の北
+        let geoAnchor = ARGeoAnchor(coordinate: start)
+//        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
+        if let modelEntity = try? Entity.loadModel(named: "arrow") {
+            modelEntity.scale = SIMD3<Float>(0.2, 0.2, 0.2)
+            modelEntity.transform.rotation = simd_quatf(angle: .pi / 2, axis: [0, 1, 0])
+            let anchorEntity = AnchorEntity(anchor: geoAnchor) // 適切な位置に配置
+            anchorEntity.addChild(modelEntity)
+            arView?.session.add(anchor: geoAnchor)
+            arView?.scene.addAnchor(anchorEntity)
+        }
+        
+        //mid -90するから想定では現実世界の南
+        let geoAnchor2 = ARGeoAnchor(coordinate: mid)
+//        let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:50))
+        if let modelEntity2 = try? Entity.loadModel(named: "arrow") {
+            modelEntity2.scale = SIMD3<Float>(0.1, 0.1, 0.1)
+            modelEntity2.transform.rotation = simd_quatf(angle: -.pi / 2, axis: [0, 1, 0])
+            let anchorEntity2 = AnchorEntity(anchor: geoAnchor2) // 適切な位置に配置
+            anchorEntity2.addChild(modelEntity2)
+            
+            arView?.session.add(anchor: geoAnchor2)
+            arView?.scene.addAnchor(anchorEntity2)
+        }
+        
+        
+
+    
         DispatchQueue.main.async {
             coordinates.forEach { coordinate in
-                let geoAnchor = ARGeoAnchor(coordinate: coordinate)
+                let geoAnchor = ARGeoAnchor(coordinate: coordinate) //固定点
 #if !targetEnvironment(simulator)
-                let anchorEntity = AnchorEntity(anchor: geoAnchor)
+                let anchorEntity = AnchorEntity(anchor: geoAnchor) //オブジェクトの枠組み
 #else
                 let anchorEntity = AnchorEntity()
 #endif
-                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5))
+//                let modelEntity = ModelEntity(mesh: MeshResource.generateSphere(radius: 0.5)) //オブジェ
+                let modelEntity = ModelEntity(mesh: MeshResource.generatePlane(width:1,depth:1))
                 let material = SimpleMaterial(color: .blue, isMetallic: false)
                 modelEntity.components[ModelComponent.self]?.materials = [material]
                 anchorEntity.addChild(modelEntity)
@@ -102,6 +140,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
             }
             
         }
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
@@ -110,15 +149,6 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print(error)
-    }
-    
-    func coachingOverlayViewDidDeactivate(_ coachingOverlayView: ARCoachingOverlayView) {
-        // コーチングオーバーレイが非アクティブになったら、最新の座標でARビューを更新する
-        if let coordinates = self.locationViewModel?.coordinates {
-            updateARView(with: coordinates)
-        } else {
-            print("最新の座標データがまだ利用可能ではありません。")
-        }
     }
     
 }
@@ -138,4 +168,5 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
 //
 //            arView?.session.add(anchor: geoAnchor) // 仮想オブジェクトをどこに固定するか決定
 //            arView?.scene.addAnchor(anchorEntity) // オブジェクトを実際に配置
+
 
