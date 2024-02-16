@@ -23,6 +23,8 @@
 		2A620DB22B739D9800308D41 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A620DB12B739D9800308D41 /* CoreLocation.framework */; };
 		2A620DB62B739E2F00308D41 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB52B739E2F00308D41 /* ARView.swift */; };
 		2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */; };
+		2A72167A2B7EF6BB00B973D8 /* UpperControlsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A7216792B7EF6BB00B973D8 /* UpperControlsView.swift */; };
+		2A72167C2B7EFB0300B973D8 /* WarningView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2A72167B2B7EFB0300B973D8 /* WarningView.swift */; };
 		2ABA8AAA2B71E9B400981749 /* TestView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AA92B71E9B400981749 /* TestView.swift */; };
 		2ABA8AAC2B71E9BA00981749 /* Third.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2ABA8AAB2B71E9BA00981749 /* Third.swift */; };
 		2AC3D9B82B7DC82000C984F3 /* arrow.usdz in Resources */ = {isa = PBXBuildFile; fileRef = 2AC3D9B72B7DC82000C984F3 /* arrow.usdz */; };
@@ -81,6 +83,8 @@
 		2A620DB12B739D9800308D41 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		2A620DB52B739E2F00308D41 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		2A620DB92B73ABB500308D41 /* TextBoxViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextBoxViewModel.swift; sourceTree = "<group>"; };
+		2A7216792B7EF6BB00B973D8 /* UpperControlsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpperControlsView.swift; sourceTree = "<group>"; };
+		2A72167B2B7EFB0300B973D8 /* WarningView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WarningView.swift; sourceTree = "<group>"; };
 		2ABA8AA92B71E9B400981749 /* TestView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestView.swift; sourceTree = "<group>"; };
 		2ABA8AAB2B71E9BA00981749 /* Third.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Third.swift; sourceTree = "<group>"; };
 		2AC3D9B72B7DC82000C984F3 /* arrow.usdz */ = {isa = PBXFileReference; lastKnownFileType = file.usdz; name = arrow.usdz; path = ../../../../Downloads/arrow.usdz; sourceTree = "<group>"; };
@@ -188,6 +192,7 @@
 				2A620DB52B739E2F00308D41 /* ARView.swift */,
 				2AE65FFE2B7B89B600371C26 /* ARView+Extension.swift */,
 				2AE65FFC2B7B897D00371C26 /* Coordinator.swift */,
+				2A7216792B7EF6BB00B973D8 /* UpperControlsView.swift */,
 				2A01CA1C2B7AA0310030AF4C /* FullScreenARView.swift */,
 			);
 			path = AR;
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				2AD875B02B71E3C80092F094 /* NavigationButtonView.swift */,
+				2A72167B2B7EFB0300B973D8 /* WarningView.swift */,
 				2ABA8AA92B71E9B400981749 /* TestView.swift */,
 				2ABA8AAB2B71E9BA00981749 /* Third.swift */,
 			);
@@ -461,12 +467,14 @@
 				2A620DBA2B73ABB500308D41 /* TextBoxViewModel.swift in Sources */,
 				2A1B9EA22B7264220040DB7A /* SignUpView.swift in Sources */,
 				2A01CA1D2B7AA0310030AF4C /* FullScreenARView.swift in Sources */,
+				2A72167A2B7EF6BB00B973D8 /* UpperControlsView.swift in Sources */,
 				2AF2740F2B73D05A00D9A97E /* UserViewModel.swift in Sources */,
 				2A1B9EA42B7264A50040DB7A /* ResetPasswordView.swift in Sources */,
 				2AE65FFD2B7B897D00371C26 /* Coordinator.swift in Sources */,
 				2A01CA212B7AD0E30030AF4C /* LocationVM+Extension.swift in Sources */,
 				2A01CA1F2B7AADEF0030AF4C /* LocationViewModel.swift in Sources */,
 				2AF2740D2B73CFBF00D9A97E /* UserModel.swift in Sources */,
+				2A72167C2B7EFB0300B973D8 /* WarningView.swift in Sources */,
 				2AD875B72B71E7070092F094 /* PostButtonView.swift in Sources */,
 				2A1B9EA02B7264110040DB7A /* SignInView.swift in Sources */,
 			);

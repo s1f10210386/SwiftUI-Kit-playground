@@ -9,10 +9,11 @@ import SwiftUI
 
 struct UpperControlsView: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text("注意: AR体験中は周囲の安全を確認してください。")
+            .padding()
+            .background(Color.yellow)
+            .cornerRadius(10)
+            .foregroundColor(Color.black)
+            .padding()
     }
-}
-
-#Preview {
-    UpperControlsView()
 }

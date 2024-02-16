@@ -34,6 +34,7 @@ struct ARViewContainer: UIViewRepresentable {
     
         //arViewの内容をcoordinatorでいじれるように結びつけた。
         context.coordinator.arView = arView
+        
         //arviewの拡張関数CoachingOvelayViewを呼び出す
         arView.setupCoachingOverlay(context.coordinator)
         

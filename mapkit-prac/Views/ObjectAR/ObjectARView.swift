@@ -49,9 +49,14 @@ struct ObjectARViewContainer: UIViewRepresentable {
             for anchor in anchors {
                 guard let objectAnchor = anchor as? ARObjectAnchor else { continue }
                 
-                // RealityKitで球体を追加
+                
                 let sphere = ModelEntity(mesh: .generateSphere(radius: 0.05), materials: [SimpleMaterial(color: .red, isMetallic: true)])
+#if !targetEnvironment(simulator)
                 let anchorEntity = AnchorEntity(anchor: objectAnchor)
+#else
+//シュミレータ
+let anchorEntity = AnchorEntity()
+#endif
                 anchorEntity.addChild(sphere)
                 
                 DispatchQueue.main.async {

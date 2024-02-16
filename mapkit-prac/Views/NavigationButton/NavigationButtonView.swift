@@ -12,15 +12,17 @@ struct NavigationButtonView: View {
     @State var isShowARView = false
     @State var isShowSecond = false
     @State var isShowThird = false
-
+    @State private var isShowWarning = false
+    
+    
     
     var body: some View {
         
         VStack {
             
             Button(action: {
+                isShowWarning = true
                 isShowARView = true
-                
             }) {
                 Image(systemName: "cube.transparent")
                     .padding()
@@ -28,8 +30,12 @@ struct NavigationButtonView: View {
                     .background(Color.blue.opacity(0.7))
                     .clipShape(Circle())
             }
+            .fullScreenCover(isPresented: $isShowWarning) {
+                WarningView(isPresented: $isShowWarning)
+            }
             .fullScreenCover(isPresented: $isShowARView) {
-                FullScreenARView()                        }
+                FullScreenARView()
+            }
             
             Button(action: {
                 isShowSecond = true
@@ -53,7 +59,7 @@ struct NavigationButtonView: View {
                     .foregroundColor(.white)
                     .sheet(isPresented: $isShowThird){
                         ObjectARContentView()
-//                        HelloView(viewModel: AuthViewModel())
+                        //                        HelloView(viewModel: AuthViewModel())
                             .presentationDetents([.medium, .large])
                     }
                     .background(Color.blue.opacity(0.7))
