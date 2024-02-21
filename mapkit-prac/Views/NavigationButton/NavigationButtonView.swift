@@ -34,7 +34,7 @@ struct NavigationButtonView: View {
                 WarningView(isPresented: $isShowWarning)
             }
             .fullScreenCover(isPresented: $isShowARView) {
-                FullScreenARView()
+                ARContentView()
             }
             
             Button(action: {
