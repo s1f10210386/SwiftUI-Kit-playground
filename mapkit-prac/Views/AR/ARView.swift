@@ -12,10 +12,27 @@ import Foundation
 import CoreLocation
 
 
-struct ARContentView : View {
-    
+struct ARContentView: View {
+    @Environment(\.presentationMode) var presentationMode
+
     var body: some View {
-        ARViewContainer().edgesIgnoringSafeArea(.all)
+        VStack {
+            ARViewContainer().edgesIgnoringSafeArea(.all)
+            
+            // 閉じるボタン
+            Button(action: {
+                // ビューを閉じる
+                presentationMode.wrappedValue.dismiss()
+            }) {
+                Image(systemName: "xmark.circle.fill")
+                    .padding()
+                    .foregroundColor(.white)
+                    .background(Color.black.opacity(0.7))
+                    .clipShape(Circle())
+            }
+            .padding() // 必要に応じて調整
+            .accessibilityLabel(Text("閉じる"))
+        }
     }
 }
 

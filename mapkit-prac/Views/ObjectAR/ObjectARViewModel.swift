@@ -14,10 +14,19 @@ import SwiftUI
 class ObjectARViewModel: ObservableObject {
     var arView: ARView = ARView() // RealityKitのARView
 
+    @Published var referenceImages: Set<ARReferenceImage> = []
     @Published var referenceObjects: Set<ARReferenceObject> = []
 
     init() {
+        loadReferenceImages()
         loadReferenceObjects()
+    }
+    
+    private func loadReferenceImages() {
+        guard let referenceImages = ARReferenceImage.referenceImages(inGroupNamed: "AppIcons", bundle: nil) else {
+            fatalError("Missing expected asset catalog resources.")
+        }
+        self.referenceImages = referenceImages
     }
 
     private func loadReferenceObjects() {
@@ -30,7 +39,10 @@ class ObjectARViewModel: ObservableObject {
 
     func startARSession() {
         let configuration = ARWorldTrackingConfiguration()
+        
+        configuration.detectionImages = referenceImages
         configuration.detectionObjects = referenceObjects
+        
         arView.session.run(configuration)
     }
 }
