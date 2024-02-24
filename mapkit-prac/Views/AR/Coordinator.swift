@@ -96,11 +96,18 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
                 if let modelEntity = try? Entity.loadModel(named: "arrow") {
                     modelEntity.scale = SIMD3<Float>(0.1, 0.1, 0.1)
                     modelEntity.transform.rotation = simd_quatf(angle: .pi/2 - Float(bearingRadians), axis: [0, 1, 0])
-
+                    
                     let geoAnchor = ARGeoAnchor(coordinate: start)
 
-
+                    
+                    #if !targetEnvironment(simulator)
                     let anchorEntity = AnchorEntity(anchor: geoAnchor) // 適切な位置に配置
+                    #else
+                    
+                    //シミュレーター
+                    let anchorEntity = AnchorEntity()
+                    #endif
+
                     anchorEntity.addChild(modelEntity)
                     
                     self.arView?.session.add(anchor: geoAnchor)
