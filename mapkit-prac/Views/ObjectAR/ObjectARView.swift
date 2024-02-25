@@ -14,14 +14,24 @@ struct ObjectARContentView: View {
     var viewModel = ObjectARViewModel()
     
     var body: some View {
-        VStack {
-            ObjectARViewContainer(viewModel: viewModel)
-                .edgesIgnoringSafeArea(.all)
-            Button("Start AR Session") {
-                viewModel.startARSession()
+            ZStack {
+                ObjectARViewContainer(viewModel: viewModel)
+                    .edgesIgnoringSafeArea(.all)
+                
+                VStack {
+                    Spacer() // VStack内でSpacerを使って、ボタンを下に押し下げる
+                    
+                    Button("Start AR Session") {
+                        viewModel.startARSession()
+                    }
+                    .padding() // ボタンの周りに余白を追加
+                    .background(Color.blue) // ボタンの背景色を設定
+                    .foregroundColor(.white) // ボタンのテキスト色を白に
+                    .cornerRadius(10) // ボタンの角を丸くする
+                    .padding(.bottom) // ボタンの下部にも余白を追加
+                }
             }
         }
-    }
 }
 
 struct ObjectARViewContainer: UIViewRepresentable {
@@ -67,8 +77,13 @@ struct ObjectARViewContainer: UIViewRepresentable {
                         box.model?.materials = [imageMaterial] // ボックスのマテリアルに設定する
                     }
                     
-                    // 生成したボックスをARImageAnchorに関連付けられたアンカーエンティティに追加する
+                    #if !targetEnvironment(simulator)
                     let anchorEntity = AnchorEntity(anchor: imageAnchor)
+                    #else
+                    
+                    let anchorEntity = AnchorEntity()
+                    #endif
+                    
                     anchorEntity.addChild(box)
                     
                     DispatchQueue.main.async {
@@ -82,8 +97,12 @@ struct ObjectARViewContainer: UIViewRepresentable {
                 
                 let sphere = ModelEntity(mesh: .generateSphere(radius: 0.05), materials: [SimpleMaterial(color: .red, isMetallic: true)])
                 
+                #if !targetEnvironment(simulator)
                 let anchorEntity = AnchorEntity(anchor: objectAnchor)
+                #else
                 
+                let anchorEntity = AnchorEntity()
+                #endif
                 
                 anchorEntity.addChild(sphere)
                 
