@@ -48,25 +48,28 @@ struct ObjectARViewContainer: UIViewRepresentable {
         func session(_ session: ARSession, didAdd anchors: [ARAnchor]) {
             for anchor in anchors {
                 
-                //画像の時
+                //名刺
+                //                if let imageAnchor = anchor as? ARImageAnchor {
+                //
+                ////                    let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
+                //                    let plane = ModelEntity(mesh: .generatePlane(width: 0.2, height: 0.3))
+                //
+                //                    let anchorEntity = AnchorEntity(anchor: imageAnchor)
+                //                    anchorEntity.addChild(plane)
+                
                 if let imageAnchor = anchor as? ARImageAnchor {
-                    ////                    let imageTextMesh = MeshResource.generateText("Hi",
-                    ////                                                             extrusionDepth: 0.1,
-                    ////                                                             font: .systemFont(ofSize: 0.05),
-                    ////                                                             containerFrame: CGRect(x: 0, y: 0, width: 0.2, height: 0.05),
-                    ////                                                             alignment: .center,
-                    ////                                                             lineBreakMode: .byWordWrapping)
-                    ////                    let imageTextMaterial = SimpleMaterial(color: .white, isMetallic: false)
-                    ////                    let imageTextEntity = ModelEntity(mesh: imageTextMesh, materials: [imageTextMaterial])
-                    ////
-                    //                    let anchorEntity1 = AnchorEntity(anchor: imageAnchor)
-                    //
-                    //                    anchorEntity1.addChild(imageTextEntity)
+                    // ボックスエンティティを生成し、画像テクスチャを適用する
+                    let box = ModelEntity(mesh: .generateBox(size: simd_make_float3(0.5, 0.5, 0.2)))
                     
+                    if let texture = try? TextureResource.load(named: "Meishi") { // テクスチャ・リソースとして画像を読み込む
+                        var imageMaterial = UnlitMaterial()
+                        imageMaterial.baseColor = MaterialColorParameter.texture(texture) // アンリット・マテリアルのテクスチャに設定する
+                        box.model?.materials = [imageMaterial] // ボックスのマテリアルに設定する
+                    }
                     
-                    let sphere = ModelEntity(mesh: .generateSphere(radius: 0.1), materials: [SimpleMaterial(color: .red, isMetallic: true)])
+                    // 生成したボックスをARImageAnchorに関連付けられたアンカーエンティティに追加する
                     let anchorEntity = AnchorEntity(anchor: imageAnchor)
-                    anchorEntity.addChild(sphere)
+                    anchorEntity.addChild(box)
                     
                     DispatchQueue.main.async {
                         self.parent.viewModel.arView.scene.addAnchor(anchorEntity)
