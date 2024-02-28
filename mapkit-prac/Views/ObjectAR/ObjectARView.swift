@@ -19,16 +19,16 @@ struct ObjectARContentView: View {
                     .edgesIgnoringSafeArea(.all)
                 
                 VStack {
-                    Spacer() // VStack内でSpacerを使って、ボタンを下に押し下げる
+                    Spacer()
                     
                     Button("Start AR Session") {
                         viewModel.startARSession()
                     }
-                    .padding() // ボタンの周りに余白を追加
-                    .background(Color.blue) // ボタンの背景色を設定
-                    .foregroundColor(.white) // ボタンのテキスト色を白に
-                    .cornerRadius(10) // ボタンの角を丸くする
-                    .padding(.bottom) // ボタンの下部にも余白を追加
+                    .padding()
+                    .background(Color.blue)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                    .padding(.bottom)
                 }
             }
         }
