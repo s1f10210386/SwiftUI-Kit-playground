@@ -86,7 +86,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     private func updateARView(with coordinates: [CLLocationCoordinate2D]) {
         
         DispatchQueue.main.async {
-            for i in 0..<coordinates.count - 1 {
+            for i in 1..<coordinates.count - 1 {
                 let start = coordinates[i]
                 let end = coordinates[i + 1]
                 
