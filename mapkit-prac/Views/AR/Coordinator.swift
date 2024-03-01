@@ -86,7 +86,7 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
     private func updateARView(with coordinates: [CLLocationCoordinate2D]) {
         
         DispatchQueue.main.async {
-            for i in 1..<coordinates.count - 1 {
+            for i in 0..<coordinates.count - 1 {
                 let start = coordinates[i]
                 let end = coordinates[i + 1]
                 
@@ -117,6 +117,47 @@ class Coordinator: NSObject, CLLocationManagerDelegate ,ARCoachingOverlayViewDel
                 }
                 
             }
+            
+//            if let posts = self.postsVM?.posts {
+                for post in posts {
+                    let textMesh = MeshResource.generateText(
+                        post.content,
+                        extrusionDepth: 0.1,
+                        font: .systemFont(ofSize: 2),
+                        containerFrame: CGRect.zero,
+                        alignment: .center,
+                        lineBreakMode: .byCharWrapping
+                    )
+                    
+                    let zahyo = post.coordinate
+                    //オブジェクトの表面の外観
+                    let material = SimpleMaterial(color: .black, isMetallic: false)
+                    let model = ModelEntity(mesh: textMesh, materials: [material])
+                    
+                    let locationWithAltitude = CLLocation(coordinate: zahyo, altitude: 10.0, horizontalAccuracy: kCLLocationAccuracyBest, verticalAccuracy: kCLLocationAccuracyBest, timestamp: Date())
+                            
+                    // ARGeoAnchorをCLLocationから作成
+                    let textAnchor = ARGeoAnchor(coordinate: locationWithAltitude.coordinate, altitude: locationWithAltitude.altitude)
+                    
+                    //AnchorEntityはオブジェクトをどこに置くのか指定するためのもの
+//                    let textAnchor = ARGeoAnchor(coordinate: zahyo)
+                    
+#if !targetEnvironment(simulator)
+                    let textAnchorEntity = AnchorEntity(anchor: textAnchor)
+#else
+                    
+                    //シミュレーター
+                    let textAnchorEntity = AnchorEntity()
+#endif
+                    
+                    textAnchorEntity.addChild(model)
+                    
+                    self.arView?.session.add(anchor: textAnchor)
+                    self.arView?.scene.addAnchor(textAnchorEntity)
+                    
+                }
+//            }
+            
         }
         
         func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
